@@ -2,23 +2,26 @@
 
 /* ===== CSS Variables ===== */
 :root {
-  --rose:    #c2687a;
-  --rose-lt: #e8a0ad;
-  --rose-dk: #9b4d5f;
-  --blush:   #f7ecee;
-  --blush2:  #fdf5f6;
+  --rose:    #C6A75E;   /* Primary Gold */
+--rose-lt: #E6C97A;   /* Light Gold */
+--rose-dk: #E6C97A; 
+  --blush:   #F6F0E2;
+  --blush2:  #FDF9F0;
   --sage:    #7b9e87;
   --sage-lt: #b8d4bf;
-  --cream:   #faf7f5;
+  --cream:   #FBF8F1;
   --charcoal:#2d2428;
   --muted:   #7a6a6e;
-  --line:    rgba(194,104,122,.15);
+  --line:    rgba(198,167,94,.18);
   --shadow:  0 24px 60px rgba(45,36,40,.10);
   --radius:  20px;
   --radius-sm: 12px;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body:    'DM Sans', system-ui, sans-serif;
 }
+
+
+--line:    rgba(198,167,94,.18);
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -144,7 +147,7 @@ nav a:hover, nav a[aria-current="page"] {
   background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dk) 100%);
   border-color: transparent;
   color: white;
-  box-shadow: 0 8px 24px rgba(194,104,122,.30);
+  box-shadow: 0 8px 24px rgba(198,167,94,.30);
 }
 
 .btn.primary:hover {
@@ -152,7 +155,7 @@ nav a:hover, nav a[aria-current="page"] {
   transform: translateY(-2px);
 }
 
-.btn.full { width: 100%; }
+.btn.full { width: 91%; }
 
 .btn.small {
   padding: 8px 16px;
@@ -247,6 +250,7 @@ nav a:hover, nav a[aria-current="page"] {
 .spotlightImage {
   position: relative;
   animation: fadeUp .8s .2s ease both;
+
 }
 
 .spotlightImage::before {
@@ -600,7 +604,7 @@ textarea { min-height: 120px; resize: vertical; }
 .value { font-size: 14px; color: var(--charcoal); }
 
 /* Bio photo */
-.heroGrid.bioLayout { grid-template-columns: 1.1fr .9fr; }
+.heroGrid.bioLayout { grid-template-columns: 1fr 1fr; }
 
 .bioSide { display: flex; flex-direction: column; gap: 0; }
 
@@ -630,6 +634,7 @@ textarea { min-height: 120px; resize: vertical; }
 .bioSideContent { padding: 20px; }
 .bioName { font-family: var(--font-display); font-size: 20px; font-weight: 500; }
 .bioRole { font-size: 13px; color: var(--muted); margin: 4px 0 14px; }
+
 
 .pillRow { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
 
