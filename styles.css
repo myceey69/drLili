@@ -267,7 +267,7 @@ nav a:hover, nav a[aria-current="page"] {
 
 .spotlightImage img {
   width: 100%;
-  max-width: 460px;
+  max-width: 470px;
   border-radius: 40% 20% 40% 20%;
   display: block;
   margin-left: auto;
@@ -507,9 +507,12 @@ nav a:hover, nav a[aria-current="page"] {
 /* ===== CONTACT FORM ===== */
 .contactWrap {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  
+  grid-template-columns: 1.2fr 1fr;
+  gap: 25px; 
   align-items: start;
+  
+  
 }
 
 .panel {
@@ -517,7 +520,9 @@ nav a:hover, nav a[aria-current="page"] {
   border: 1px solid var(--line);
   background: white;
   box-shadow: var(--shadow);
-  padding: 28px;
+  padding: 55px ;
+
+
 }
 
 .panel h3 {
@@ -525,6 +530,7 @@ nav a:hover, nav a[aria-current="page"] {
   font-size: 22px;
   font-weight: 500;
   margin-bottom: 6px;
+  
 }
 
 form { display: flex; flex-direction: column; gap: 16px; }
