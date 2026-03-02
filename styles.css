@@ -1045,22 +1045,260 @@ select {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 900px) {
+
+/* Tablet & Medium screens (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container { width: min(95vw, 100%); }
+  
   .spotlightGrid, .heroGrid, .contactWrap, .bioGrid { grid-template-columns: 1fr; }
   .spotlightText h1 { text-align: center; }
   .spotlightText p { margin: 0 auto 18px; text-align: center; }
   .heroCtas, .trustBadges { justify-content: center; }
   .spotlightImage::before { display: none; }
-  .spotlightImage img { margin: 0 auto; border-radius: 24px; }
+  .spotlightImage img { margin: 0 auto; border-radius: 24px; max-width: 100%; }
   .floatCard { display: none; }
   .cards3 { grid-template-columns: repeat(2, 1fr); }
-  nav ul { display: none; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  nav ul { gap: 0; }
+  nav a { padding: 6px 10px; font-size: 13px; }
   .ctaBox { flex-direction: column; text-align: center; }
   .ctaBtns { justify-content: center; }
+  .contactInfoPanel { grid-column: 1 / -1; }
+  .heroGrid.bioLayout { grid-template-columns: 1fr; }
+  .bioPhoto { height: 400px; }
+  .section { padding: 40px 0; }
+  .spotlightSection { padding: 60px 0 40px; }
 }
 
-@media (max-width: 560px) {
+/* Tablets (768px - 900px) */
+@media (max-width: 900px) {
+  .spotlightText h1 { font-size: clamp(28px, 3.5vw, 44px); }
+  .sectionTitle h2 { font-size: clamp(24px, 2.5vw, 32px); }
+  .cards3 { gap: 16px; }
+  .card { padding: 20px; }
+  .panel { padding: 20px; }
+  .badge { padding: 5px 10px; font-size: 10px; }
+}
+
+/* Small devices (560px - 768px) */
+@media (max-width: 768px) {
+  .container { width: min(96vw, 100%); }
+  
   .cards3, .grid { grid-template-columns: 1fr; }
   .kpiGrid { grid-template-columns: 1fr; }
-  .heroCard { padding: 24px 20px; }
+  .heroCard { padding: 20px; }
+  .sideCard { padding: 16px; }
+  
+  nav ul { gap: 4px; }
+  nav a { padding: 6px 8px; font-size: 12px; }
+  #langToggle { padding: 6px 10px; font-size: 12px; margin-left: 4px; }
+  
+  .spotlightSection { padding: 40px 0 30px; }
+  .section { padding: 40px 0; }
+  .sectionTitle { margin-bottom: 30px; }
+  .sectionTitle h2 { font-size: clamp(22px, 2.2vw, 28px); }
+  
+  .spotlightText h1 { font-size: clamp(26px, 3vw, 38px); }
+  .spotlightText p { font-size: 15px; }
+  
+  .btn { padding: 10px 18px; font-size: 13px; }
+  .btn.small { padding: 7px 14px; font-size: 12px; }
+  
+  .contactWrap { gap: 16px; }
+  .panel { padding: 20px 16px; }
+  
+  .modal { width: 90vw; }
+  dialog { width: min(90vw, 100%); }
+  
+  .toolbar { flex-direction: column; }
+  .search { min-width: 100%; }
+  .filters { width: 100%; }
+  
+  .ctaBox { gap: 16px; padding: 0; }
+  .ctaBox h2 { font-size: clamp(20px, 2vw, 26px); }
+  .ctaBox p { font-size: 14px; }
+  
+  .bioName { font-size: 18px; }
+  .pillRow { gap: 6px; margin-bottom: 12px; }
+  .pill { padding: 5px 10px; font-size: 11px; }
+  
+  .checkList li { font-size: 13px; }
+  .bullets li { font-size: 13px; }
+  
+  .footerGrid { flex-direction: column-reverse; gap: 12px; }
+  .socialLinks { justify-content: center; }
+}
+
+/* Mobile devices (small - 560px) */
+@media (max-width: 560px) {
+  .container { width: 100vw; padding: 0 16px; margin: 0 auto; }
+  
+  .cards3, .grid { grid-template-columns: 1fr; gap: 12px; }
+  .kpiGrid { grid-template-columns: 1fr; }
+  
+  header { position: relative; }
+  .nav { padding: 12px 0; gap: 8px; }
+  .brand { font-size: 16px; gap: 8px; }
+  .brand-mark { width: 36px; height: 36px; font-size: 16px; }
+  nav ul { gap: 0; }
+  nav a { padding: 4px 6px; font-size: 11px; }
+  #langToggle { padding: 4px 8px; font-size: 11px; margin-left: 2px; }
+  
+  .spotlightSection { padding: 30px 0 20px; }
+  .section { padding: 30px 0; }
+  .sectionTitle { margin-bottom: 24px; }
+  .sectionTitle h2 { font-size: clamp(20px, 1.8vw, 24px); }
+  .sectionTitle p { font-size: 14px; }
+  
+  .spotlightText { animation: none; }
+  .spotlightText .eyebrow { font-size: 10px; padding: 4px 10px; margin-bottom: 12px; }
+  .spotlightText h1 { font-size: clamp(24px, 2.5vw, 32px); margin-bottom: 12px; }
+  .spotlightText p { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+  .spotlightImage img { max-width: 100%; }
+  
+  .heroCtas { gap: 8px; margin-top: 16px; }
+  .btn { 
+    padding: 10px 16px; 
+    font-size: 12px; 
+    width: 100%;
+    justify-content: center;
+  }
+  .btn.small { padding: 8px 12px; }
+  .heroCtas .btn { width: auto; }
+  
+  .trustBadges { gap: 12px; }
+  .trustBadge { font-size: 12px; }
+  
+  .card { 
+    padding: 16px; 
+    gap: 8px;
+    border-radius: var(--radius-sm);
+  }
+  .card .card-icon { width: 40px; height: 40px; font-size: 18px; }
+  .card h3 { font-size: 18px; }
+  .card p { font-size: 13px; }
+  
+  .heroCard { padding: 16px 12px; }
+  .heroCard h1 { font-size: clamp(22px, 2vw, 28px); margin-bottom: 8px; }
+  .heroCard p { font-size: 14px; }
+  
+  .sideCard { padding: 12px; gap: 12px; }
+  .kpi { padding: 10px; }
+  .kpi .num { font-size: 24px; }
+  .kpi .label { font-size: 11px; }
+  
+  .contactWrap { gap: 12px; }
+  .panel { padding: 16px; }
+  .panel h3 { font-size: 18px; margin-bottom: 4px; }
+  
+  form { gap: 12px; }
+  label { font-size: 12px; margin-bottom: 4px; }
+  input, textarea, select { padding: 10px 12px; font-size: 13px; }
+  textarea { min-height: 100px; }
+  
+  .checkLabel { gap: 8px; }
+  .checkLabel input[type="checkbox"] { width: 16px; height: 16px; }
+  
+  .bioGrid { gap: 16px; }
+  .bioPhoto { height: 300px; }
+  .bioPhotoCard { border-radius: var(--radius-sm); }
+  .bioSideContent { padding: 12px; }
+  .bioName { font-size: 16px; }
+  .bioRole { font-size: 12px; }
+  
+  .highlight { padding: 10px 12px; font-size: 12px; }
+  .kicker { font-size: 10px; min-width: 60px; }
+  
+  .checkList li { font-size: 13px; }
+  .checkList li::before { width: 20px; height: 20px; font-size: 11px; }
+  .bullets li { font-size: 13px; padding-left: 12px; }
+  .infoGrid { gap: 10px; margin-top: 6px; }
+  .infoItem { padding-left: 10px; }
+  
+  .timeline { gap: 12px; }
+  .timeline li { gap: 10px; }
+  .timeline .time { font-size: 11px; min-width: 70px; }
+  .timeline .detail { font-size: 13px; }
+  
+  .note { padding: 10px 12px; font-size: 12px; margin-top: 10px; }
+  
+  .cta .section { padding: 30px 0; }
+  .ctaBox { gap: 12px; }
+  .ctaBox h2 { font-size: clamp(18px, 1.8vw, 22px); margin-bottom: 4px; }
+  .ctaBox p { font-size: 13px; }
+  .ctaBtns { gap: 8px; width: 100%; }
+  .ctaBtns .btn { width: 100%; }
+  
+  .featuredPost { padding: 20px; }
+  .featuredPost h3 { font-size: 20px; }
+  .featuredPost .meta { font-size: 12px; }
+  
+  footer { padding: 20px 0; }
+  .footerGrid { 
+    flex-direction: column-reverse; 
+    gap: 8px; 
+    text-align: center;
+  }
+  .footerGrid .brand-text { font-size: 14px; }
+  .socialLinks { justify-content: center; gap: 10px; }
+  .socialIcon { width: 36px; height: 36px; }
+  .socialIcon svg { width: 16px; height: 16px; }
+  
+  dialog { 
+    width: 90vw; 
+    max-height: 90vh;
+    border-radius: 16px;
+  }
+  .modalHead { padding: 16px 16px 12px; font-size: 16px; }
+  .modalBody { padding: 16px; max-height: 60vh; }
+  .closeBtn { width: 32px; height: 32px; font-size: 14px; }
+  
+  .toolbar { gap: 8px; }
+  .search { padding: 8px 12px; gap: 8px; }
+  .search input { font-size: 13px; }
+  .filters { gap: 6px; }
+  select { padding: 8px 12px; font-size: 13px; }
+  
+  .miniBtn { padding: 7px 12px; font-size: 12px; }
+  .actions { gap: 8px; }
+  
+  .contactInfoPanel { padding: 16px; }
+  .contactInfoPanel h3 { font-size: 18px; }
+  .infoRow { padding: 10px 0; gap: 10px; }
+  .infoRow .icon-wrap { width: 36px; height: 36px; font-size: 16px; }
+  .infoRow .info-label { font-size: 10px; }
+  .infoRow .info-val { font-size: 13px; }
+  
+  .topRow { flex-direction: column; gap: 8px; }
+  .name { font-size: 16px; }
+  .spec { font-size: 12px; }
+  .desc { font-size: 13px; }
+  .metaRow { font-size: 12px; }
+  
+  #formStatus { padding: 10px 12px; font-size: 13px; }
+}
+
+/* Extra small devices (< 360px) */
+@media (max-width: 360px) {
+  .container { padding: 0 12px; }
+  
+  .brand { font-size: 14px; }
+  .brand-mark { width: 32px; height: 32px; font-size: 14px; }
+  
+  .spotlightText h1 { font-size: 22px; }
+  .sectionTitle h2 { font-size: 20px; }
+  .heroCard h1 { font-size: 20px; }
+  .ctaBox h2 { font-size: 18px; }
+  
+  .btn { padding: 9px 14px; font-size: 11px; }
+  
+  .card { padding: 12px; }
+  .card h3 { font-size: 16px; }
+  
+  .panel { padding: 12px; }
+  .heroCard { padding: 12px; }
+  
+  input, textarea, select { padding: 8px 10px; font-size: 12px; }
+  
+  .bioPhoto { height: 250px; }
 }
