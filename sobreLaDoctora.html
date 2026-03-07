@@ -16,16 +16,20 @@
         <div class="brand-mark">🌸</div>
         <span>Dra. Lili Chong Loo</span>
       </a>
-      <nav aria-label="Navegación principal">
+      <button id="menuToggle" class="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav" aria-label="Navegación principal" class="mobileNav">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="sobreLaDoctora.html" aria-current="page">Sobre La Doctora</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="citas.html">Citas</a></li>
+          <li><a href="index.html" data-i18n="nav-inicio">Inicio</a></li>
+          <li><a href="sobreLaDoctora.html" aria-current="page" data-i18n="nav-doctora">Sobre La Doctora</a></li>
+          <li><a href="clinicas.html" data-i18n="nav-clinicas">Clínicas</a></li>
+          <li><a href="blog.html" data-i18n="nav-blog">Blog</a></li>
         </ul>
       </nav>
-      <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">
-        <span aria-hidden="true">📅</span> Agenda tu Cita
+      <button id="langToggle" onclick="cycleLanguage()" style="border:none;background:white;cursor:pointer;">🇺🇸 EN</button>
+      <a class="btn primary" href="clinicas.html" target="_blank">
+        <span aria-hidden="true">📅</span> <span data-i18n="nav-agendar">Agenda tu Cita</span>
       </a>
     </div>
   </div>
@@ -40,38 +44,35 @@
 
         <div class="heroCard">
           <div class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);background:var(--blush);padding:6px 14px;border-radius:999px;margin-bottom:20px;">
-            🌿 Especialista en Ginecología
+            🌿 <span data-i18n="doctora-eyebrow">Especialista en Ginecología</span>
           </div>
-          <h1>Dra. Lili Chong Loo</h1>
-          <p style="margin-top:12px;">
-            En Dorado Clinic Center, la Dra. Lili Chong Loo acompaña a sus pacientes con 
-            un enfoque humano, basado en evidencia y orientado a resultados. Su prioridad 
-            es que entiendas tu diagnóstico, tus opciones y el plan de tratamiento más 
-            adecuado para ti.
+          <h1 data-i18n="doctora-title">Dra. Lili Chong Loo</h1>
+          <p style="margin-top:12px;" data-i18n="doctora-desc">
+            Dra. Lili Chong, egresada de la Facultad de Medicina de la Universidad de Panamá, se especializa en Ginecología y Obstetricia en el Complejo Hospitalario Dr. Manuel Amador Guerrero. Con más de 15 años de experiencia, acompaña a sus pacientes en Dorado Clinic Center, FertiClinic Center y Bocas Surgery Center con un enfoque humano, basado en evidencia y orientado a resultados. Su prioridad es que entiendas tu diagnóstico, tus opciones y el plan de tratamiento más adecuado para ti.
           </p>
 
           <div class="bioHighlights" role="list" aria-label="Resumen profesional">
             <div class="highlight" role="listitem">
-              <div class="kicker">Especialidad</div>
-              <div class="value">Ginecología y Obstetricia</div>
+              <div class="kicker" data-i18n="bio-specialty">Especialidad</div>
+              <div class="value" data-i18n="bio-specialty-value">Ginecología y Obstetricia</div>
             </div>
             <div class="highlight" role="listitem">
-              <div class="kicker">Enfoque</div>
-              <div class="value">Atención personalizada y seguimiento continuo</div>
+              <div class="kicker" data-i18n="bio-approach">Enfoque</div>
+              <div class="value" data-i18n="bio-approach-value">Atención personalizada y seguimiento continuo</div>
             </div>
             <div class="highlight" role="listitem">
-              <div class="kicker">Atiende</div>
-              <div class="value">Pacientes por cita previa</div>
+              <div class="kicker" data-i18n="bio-patients">Atiende</div>
+              <div class="value" data-i18n="bio-patients-value">Pacientes por cita previa</div>
             </div>
             <div class="highlight" role="listitem">
-              <div class="kicker">Importante</div>
-              <div class="value"><strong>Las consultas no son gratuitas</strong></div>
+              <div class="kicker" data-i18n="bio-important">Importante</div>
+              <div class="value"><strong data-i18n="bio-important-value">Las consultas no son gratuitas</strong></div>
             </div>
           </div>
 
           <div class="heroCtas" style="margin-top:24px;">
-            <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 Agenda tu Cita</a>
-            <a class="btn" href="#contacto">Contacto</a>
+            <a class="btn primary" href="clinicas.html" target="_blank">📅 <span data-i18n="nav-agendar">Agenda tu Cita</span></a>
+            <a class="btn" href="#contacto" data-i18n="nav-citas">Contacto</a>
           </div>
         </div>
 
@@ -93,7 +94,7 @@
 				
                 <span class="pill">🏥 Presencial</span>
               </div>
-              <a class="btn primary full" href="https://calendly.com/doradocliniccenter/" target="_blank">
+              <a class="btn primary full" href="tel:+5076952-1588" target="_blank">
                 📅 Reservar Cita
               </a>
             </div>
@@ -108,39 +109,39 @@
   <section class="section alt reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Filosofía de atención</div>
-        <h2>Trayectoria y propósito</h2>
-        <p>Un cuidado médico de calidad empieza con escuchar, evaluar con detalle y explicar con claridad.</p>
+        <div class="eyebrow" data-i18n="bio-philosophy">Filosofía de atención</div>
+        <h2 data-i18n="bio-trayectoria">Trayectoria y propósito</h2>
+        <p data-i18n="bio-trayectoria-desc">Un cuidado médico de calidad empieza con escuchar, evaluar con detalle y explicar con claridad.</p>
       </div>
 
       <div class="bioGrid">
         <article class="card reveal">
           <div class="card-icon">💜</div>
-          <h3>Mi propósito</h3>
-          <p>Acompañarte con empatía y profesionalismo para que tomes decisiones informadas sobre tu salud. Cada consulta busca identificar la causa, definir prioridades y construir un plan realista.</p>
+          <h3 data-i18n="bio-purpose-title">Mi propósito</h3>
+          <p data-i18n="bio-purpose-desc">Acompañarte con empatía y profesionalismo para que tomes decisiones informadas sobre tu salud. Cada consulta busca identificar la causa, definir prioridades y construir un plan realista.</p>
           <ul class="checkList" style="margin-top:12px;">
-            <li>Evaluación completa y conversación clara</li>
-            <li>Plan de tratamiento paso a paso</li>
-            <li>Seguimiento y ajustes según evolución</li>
+            <li data-i18n="bio-purpose-item1">Evaluación completa y conversación clara</li>
+            <li data-i18n="bio-purpose-item2">Plan de tratamiento paso a paso</li>
+            <li data-i18n="bio-purpose-item3">Seguimiento y ajustes según evolución</li>
           </ul>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">🩺</div>
-          <h3>Cómo trabajo</h3>
-          <p>La consulta se centra en tu historia clínica, síntomas, hábitos y objetivos. Cuando es necesario, se recomiendan estudios o referencias para asegurar un diagnóstico preciso.</p>
+          <h3 data-i18n="bio-work-title">Cómo trabajo</h3>
+          <p data-i18n="bio-work-desc">La consulta se centra en tu historia clínica, síntomas, hábitos y objetivos. Cuando es necesario, se recomiendan estudios o referencias para asegurar un diagnóstico preciso.</p>
           <div class="infoGrid" style="margin-top:12px;">
             <div class="infoItem">
-              <div class="label">Primera visita</div>
-              <div class="text">Historia clínica + evaluación + plan inicial</div>
+              <div class="label" data-i18n="bio-work-first">Primera visita</div>
+              <div class="text" data-i18n="bio-work-first-value">Historia clínica + evaluación + plan inicial</div>
             </div>
             <div class="infoItem">
-              <div class="label">Seguimientos</div>
-              <div class="text">Control de progreso y ajustes del plan</div>
+              <div class="label" data-i18n="bio-work-follow">Seguimientos</div>
+              <div class="text" data-i18n="bio-work-follow-value">Control de progreso y ajustes del plan</div>
             </div>
             <div class="infoItem">
-              <div class="label">Coordinación</div>
-              <div class="text">Referidos y colaboración con especialistas si aplica</div>
+              <div class="label" data-i18n="bio-work-coord">Coordinación</div>
+              <div class="text" data-i18n="bio-work-coord-value">Referidos y colaboración con especialistas si aplica</div>
             </div>
           </div>
         </article>
@@ -152,42 +153,62 @@
   <section class="section reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Formación académica</div>
-        <h2>Credenciales</h2>
-        <p>Formación sólida y certificaciones que respaldan cada diagnóstico y tratamiento.</p>
+        <div class="eyebrow" data-i18n="credentials-eyebrow">Formación académica</div>
+        <h2 data-i18n="credentials-title">Credenciales</h2>
+        <p data-i18n="credentials-desc">Formación sólida y certificaciones que respaldan cada diagnóstico y tratamiento.</p>
       </div>
 
       <div class="bioGrid">
         <article class="card reveal">
           <div class="card-icon">🎓</div>
-          <h3>Educación</h3>
+          <h3 data-i18n="education-title">Educación</h3>
           <ul class="timeline">
             <li>
-              <div class="time">Año – Año</div>
-              <div class="detail"><strong>Universidad / Institución</strong> — Grado / Especialidad</div>
+              <div class="time">2006</div>
+              <div class="detail"><strong>Facultad de Medicina</strong> — Universidad de Panamá</div>
             </li>
             <li>
-              <div class="time">Año – Año</div>
-              <div class="detail"><strong>Residencia / Fellow</strong> — Ginecología y Obstetricia</div>
+              <div class="time">2012</div>
+              <div class="detail"><strong>Médico Interno Categoría II</strong> — Hospital Santo Tomás</div>
             </li>
             <li>
-              <div class="time">Año</div>
-              <div class="detail"><strong>Formación adicional</strong> — Curso / Diplomado</div>
+              <div class="time">2013</div>
+              <div class="detail"><strong>Médico Interno Categoría I</strong> — Hospital Regional de la Chorrera, Dr. Nicolás A. Solano</div>
+            </li>
+            <li>
+              <div class="time">2014</div>
+              <div class="detail"><strong>Idoneidad en Medicina General</strong></div>
+            </li>
+            <li>
+              <div class="time">2015</div>
+              <div class="detail"><strong>Médico Residente de Ginecología y Obstetricia</strong> — Complejo Hospitalario Dr. Manuel Amador Guerrero</div>
+            </li>
+            <li>
+              <div class="time">2019</div>
+              <div class="detail"><strong>Idoneidad en Ginecología y Obstetricia</strong></div>
+            </li>
+            <li>
+              <div class="time">2020</div>
+              <div class="detail"><strong>Jefa del Servicio</strong> — Hospital Regional Dr. Raúl Dávila Mena</div>
+            </li>
+            <li>
+              <div class="time">2022</div>
+              <div class="detail"><strong>Médico Especialista en Ginecología y Obstetricia</strong> — Hospital Irma de Lourdes Tzanetatos</div>
             </li>
           </ul>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">📋</div>
-          <h3>Licencias y certificaciones</h3>
+          <h3 data-i18n="licenses-title">Diplomados y Certificaciones</h3>
           <ul class="bullets">
-            <li>Licencia médica: (Número / Región)</li>
-            <li>Certificación: (Entidad certificadora)</li>
-            <li>Membresías profesionales: (Colegio / Asociación)</li>
+            <li>Programa de Gyn Laparoscopic Surgical Techniques — Instituto Johnson &amp; Johnson, Bogotá, Colombia (2019)</li>
+            <li>Cirugía Laparoscópica Ginecológica — Clínica del Country, Bogotá, Colombia (2019)</li>
+            <li>Formación en Ecografía Obstétrico y Ginecológica — Hospital Universitari Dexeus, Barcelona, España (2019)</li>
+            <li>Histerectomía – Actualización — XVII Congreso Bienal de Obstetricia y Ginecología. La Asociación Bogotana de Obstetricia y Ginecología (2019)</li>
+            <li>Trabajo de Investigación "Epidemiología de las madres adolescentes atendidas en el CHDr.MAG" — Colón (2019)</li>
+            <li>V Congreso de Neonatología, Ginecología y Obstetricia, Ier Congreso de Desarrollo Integral — Panamá (2019)</li>
           </ul>
-          <div class="note">
-            <strong>Nota:</strong> Esta sección puede mostrarse de forma discreta si prefieres no publicar números de cédula.
-          </div>
         </article>
       </div>
     </div>
@@ -197,41 +218,41 @@
   <section class="section alt reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Lo que ofrecemos</div>
-        <h2>Áreas de atención</h2>
-        <p>Servicios especializados para acompañarte en cada etapa de tu salud femenina.</p>
+        <div class="eyebrow" data-i18n="areas-eyebrow">Lo que ofrecemos</div>
+        <h2 data-i18n="areas-title">Áreas de atención</h2>
+        <p data-i18n="areas-desc">Servicios especializados para acompañarte en cada etapa de tu salud femenina.</p>
       </div>
 
       <div class="cards3">
         <article class="card reveal">
           <div class="card-icon">🤰</div>
-          <h3>Control Prenatal</h3>
-          <p>Seguimiento integral del embarazo para asegurar la salud de madre e hijo en cada trimestre.</p>
+          <h3 data-i18n="service1-title">Control Prenatal</h3>
+          <p data-i18n="service1-desc">Seguimiento integral del embarazo para asegurar la salud de madre e hijo en cada trimestre.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">🌺</div>
-          <h3>Ginecología General</h3>
-          <p>Evaluación, diagnóstico y tratamiento de condiciones propias de la mujer en todas las etapas.</p>
+          <h3 data-i18n="service2-title">Ginecología General</h3>
+          <p data-i18n="service2-desc">Evaluación, diagnóstico y tratamiento de condiciones propias de la mujer en todas las etapas.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">💠</div>
-          <h3>Planificación Familiar</h3>
-          <p>Asesoramiento personalizado sobre métodos anticonceptivos y opciones reproductivas.</p>
+          <h3 data-i18n="service3-title">Planificación Familiar</h3>
+          <p data-i18n="service3-desc">Asesoramiento personalizado sobre métodos anticonceptivos y opciones reproductivas.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">📡</div>
-          <h3>Ultrasonido Obstétrico</h3>
-          <p>Evaluación fetal detallada con equipos modernos y lectura especializada.</p>
+          <h3 data-i18n="service4-title">Ultrasonido Obstétrico</h3>
+          <p data-i18n="service4-desc">Evaluación fetal detallada con equipos modernos y lectura especializada.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">🔬</div>
-          <h3>Estudios Preventivos</h3>
-          <p>Papanicolaou, colposcopía y estudios ginecológicos para detección temprana.</p>
+          <h3 data-i18n="service5-title">Estudios Preventivos</h3>
+          <p data-i18n="service5-desc">Papanicolaou, colposcopía y estudios ginecológicos para detección temprana.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">👶</div>
-          <h3>Atención del Parto</h3>
-          <p>Presencia especializada durante el trabajo de parto para una experiencia segura.</p>
+          <h3 data-i18n="service6-title">Atención del Parto</h3>
+          <p data-i18n="service6-desc">Presencia especializada durante el trabajo de parto para una experiencia segura.</p>
         </article>
       </div>
     </div>
@@ -243,12 +264,12 @@
       <div class="container">
         <div class="ctaBox">
           <div>
-            <h2>¿Lista para tu cita?</h2>
-            <p>Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.<br><strong>Las consultas no son gratuitas.</strong></p>
+            <h2 data-i18n="doctora-cta-title">¿Lista para tu cita?</h2>
+            <p><span data-i18n="doctora-cta-desc">Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
           </div>
           <div class="ctaBtns">
-            <a class="btn" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 Agenda tu Cita</a>
-            <a class="btn outline" href="citas.html">Ver información de citas</a>
+            <a class="btn" href="tel:+5076952-1588" target="_blank">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
+            <a class="btn outline" href="clinicas.html" data-i18n="cta-btn2">Ver información de citas</a>
           </div>
         </div>
       </div>
@@ -262,10 +283,10 @@
     <div class="footerGrid">
       <div>
         <div class="brand-text">Dra. Lili Chong Loo</div>
-        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. Todos los derechos reservados.</div>
+        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. <span data-i18n="footer-copy">Todos los derechos reservados.</span></div>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="pill" href="citas.html">Citas</a>
+        <a class="pill" href="clinicas.html" data-i18n="nav-citas">Citas</a>
         <a class="pill" href="#top">Volver arriba ↑</a>
       </div>
     </div>
@@ -286,6 +307,11 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+
+<script src="translations.js"></script>
 <script src="scripts.js"></script>
 </body>
 </html>
+
+
+

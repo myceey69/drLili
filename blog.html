@@ -98,16 +98,20 @@
         <div class="brand-mark">🌸</div>
         <span>Dra. Lili Chong Loo</span>
       </a>
-      <nav aria-label="Navegación principal">
+      <button id="menuToggle" class="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav" aria-label="Navegación principal" class="mobileNav">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="sobreLaDoctora.html">Sobre La Doctora</a></li>
-          <li><a href="blog.html" aria-current="page">Blog</a></li>
-          <li><a href="citas.html">Citas</a></li>
+          <li><a href="index.html" data-i18n="nav-inicio">Inicio</a></li>
+          <li><a href="sobreLaDoctora.html" data-i18n="nav-doctora">Sobre La Doctora</a></li>
+          <li><a href="clinicas.html" data-i18n="nav-clinicas">Clínicas</a></li>
+          <li><a href="blog.html" aria-current="page" data-i18n="nav-blog">Blog</a></li>
         </ul>
       </nav>
-      <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">
-        <span aria-hidden="true">📅</span> Agenda tu Cita
+      <button id="langToggle" onclick="cycleLanguage()" style="border:none;background:white;cursor:pointer;">🇺🇸 EN</button>
+      <a class="btn primary" href="clinicas.html" target="_blank">
+        <span aria-hidden="true">📅</span> <span data-i18n="nav-agendar">Agenda tu Cita</span>
       </a>
     </div>
   </div>
@@ -120,12 +124,12 @@
     <div class="container">
       <div class="heroCard" style="text-align:center; padding:48px;">
         <div class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);background:var(--blush);padding:6px 14px;border-radius:999px;margin-bottom:20px;">
-          📖 Blog de Salud
+          📖 <span data-i18n="blog-eyebrow">Blog de Salud</span>
         </div>
         <h1 style="font-family:var(--font-display);font-size:clamp(32px,4vw,52px);font-weight:300;margin-bottom:14px;">
-          Salud & <em style="font-style:italic;color:var(--rose);">Bienestar Femenino</em>
+          <span data-i18n="blog-title">Salud &</span> <em style="font-style:italic;color:var(--rose);" data-i18n="blog-title-em">Bienestar Femenino</em>
         </h1>
-        <p style="color:var(--muted);font-size:16px;max-width:55ch;margin:0 auto;line-height:1.75;">
+        <p style="color:var(--muted);font-size:16px;max-width:55ch;margin:0 auto;line-height:1.75;" data-i18n="blog-desc">
           Información médica confiable, consejos prácticos y educación en salud 
           para que tomes decisiones informadas sobre tu cuerpo y bienestar.
         </p>
@@ -137,23 +141,23 @@
   <section class="section alt reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Artículo del mes</div>
-        <h2>Destacado</h2>
+        <div class="eyebrow" data-i18n="featured-eyebrow">Artículo del mes</div>
+        <h2 data-i18n="featured-title">Destacado</h2>
       </div>
 
       <article class="card featuredPost">
-        <div style="display:inline-block;background:var(--blush);color:var(--rose-dk);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:16px;">
+        <div style="display:inline-block;background:var(--blush);color:var(--rose-dk);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:16px;" data-i18n="featured-category">
           Prevención
         </div>
-        <h3>La importancia de los chequeos médicos preventivos</h3>
-        <div class="meta">Publicado el 22 Febrero 2026 · Dra. Lili Chong Loo · 5 min lectura</div>
-        <p>
+        <h3 data-i18n="featured-article">La importancia de los chequeos médicos preventivos</h3>
+        <div class="meta" data-i18n="featured-meta">Publicado el 22 Febrero 2026 · Dra. Lili Chong Loo · 5 min lectura</div>
+        <p data-i18n="featured-desc">
           Los chequeos médicos regulares permiten detectar condiciones en etapas tempranas, 
           mejorar el pronóstico y reducir riesgos a largo plazo. La prevención es la mejor 
           herramienta para mantener una vida saludable y plena. Desde el Papanicolaou anual 
           hasta el monitoreo hormonal, cada examen cuenta.
         </p>
-        <a href="#" class="btn primary">Leer artículo completo →</a>
+        <a href="#" class="btn primary" data-i18n="featured-btn">Leer artículo completo →</a>
       </article>
     </div>
   </section>
@@ -162,17 +166,17 @@
   <section class="section reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Explora por tema</div>
-        <h2>Categorías</h2>
+        <div class="eyebrow" data-i18n="categories-eyebrow">Explora por tema</div>
+        <h2 data-i18n="categories-title">Categorías</h2>
       </div>
       <div class="category-grid">
-        <button class="cat-pill active">Todos</button>
-        <button class="cat-pill">🌸 Prevención</button>
-        <button class="cat-pill">💊 Salud General</button>
-        <button class="cat-pill">🤰 Embarazo</button>
-        <button class="cat-pill">🌿 Bienestar</button>
-        <button class="cat-pill">🔬 Estudios Médicos</button>
-        <button class="cat-pill">❤️ Enfermedades Crónicas</button>
+        <button class="cat-pill active" data-i18n="cat-all">Todos</button>
+        <button class="cat-pill">🌸 <span data-i18n="cat-prevention">Prevención</span></button>
+        <button class="cat-pill">💊 <span data-i18n="cat-general">Salud General</span></button>
+        <button class="cat-pill">🤰 <span data-i18n="cat-pregnancy">Embarazo</span></button>
+        <button class="cat-pill">🌿 <span data-i18n="cat-wellness">Bienestar</span></button>
+        <button class="cat-pill">🔬 <span data-i18n="cat-studies">Estudios Médicos</span></button>
+        <button class="cat-pill">❤️ <span data-i18n="cat-chronic">Enfermedades Crónicas</span></button>
       </div>
     </div>
   </section>
@@ -181,56 +185,56 @@
   <section class="section alt reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Publicaciones recientes</div>
-        <h2>Últimos Artículos</h2>
+        <div class="eyebrow" data-i18n="articles-eyebrow">Publicaciones recientes</div>
+        <h2 data-i18n="articles-title">Últimos Artículos</h2>
       </div>
 
       <div class="cards3">
         <article class="card reveal">
           <div class="card-icon">🩺</div>
-          <div class="post-meta">Febrero 2026 · Salud General</div>
-          <h3>¿Cuándo debo acudir al médico?</h3>
-          <p>Señales de alerta que no debes ignorar y cuándo buscar evaluación profesional urgente.</p>
+          <div class="post-meta" data-i18n="article1-meta">Febrero 2026 · Salud General</div>
+          <h3 data-i18n="article1-title">¿Cuándo debo acudir al médico?</h3>
+          <p data-i18n="article1-desc">Señales de alerta que no debes ignorar y cuándo buscar evaluación profesional urgente.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">🥦</div>
-          <div class="post-meta">Enero 2026 · Bienestar</div>
-          <h3>Hábitos para fortalecer tu sistema inmune</h3>
-          <p>Alimentación, descanso y prácticas cotidianas que ayudan a mantener tu cuerpo protegido.</p>
+          <div class="post-meta" data-i18n="article2-meta">Enero 2026 · Bienestar</div>
+          <h3 data-i18n="article2-title">Hábitos para fortalecer tu sistema inmune</h3>
+          <p data-i18n="article2-desc">Alimentación, descanso y prácticas cotidianas que ayudan a mantener tu cuerpo protegido.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">📊</div>
-          <div class="post-meta">Diciembre 2025 · Crónicas</div>
-          <h3>Control de enfermedades crónicas</h3>
-          <p>La importancia del monitoreo continuo y la adherencia al tratamiento para una vida plena.</p>
+          <div class="post-meta" data-i18n="article3-meta">Diciembre 2025 · Crónicas</div>
+          <h3 data-i18n="article3-title">Control de enfermedades crónicas</h3>
+          <p data-i18n="article3-desc">La importancia del monitoreo continuo y la adherencia al tratamiento para una vida plena.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">🤰</div>
-          <div class="post-meta">Noviembre 2025 · Embarazo</div>
-          <h3>Primer trimestre: lo que debes saber</h3>
-          <p>Cambios físicos, emocionales y las consultas clave durante las primeras semanas de embarazo.</p>
+          <div class="post-meta" data-i18n="article4-meta">Noviembre 2025 · Embarazo</div>
+          <h3 data-i18n="article4-title">Primer trimestre: lo que debes saber</h3>
+          <p data-i18n="article4-desc">Cambios físicos, emocionales y las consultas clave durante las primeras semanas de embarazo.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">🌸</div>
-          <div class="post-meta">Octubre 2025 · Prevención</div>
-          <h3>Papanicolaou: preguntas frecuentes</h3>
-          <p>Todo lo que necesitas saber sobre este estudio preventivo esencial para la salud cervical.</p>
+          <div class="post-meta" data-i18n="article5-meta">Octubre 2025 · Prevención</div>
+          <h3 data-i18n="article5-title">Papanicolaou: preguntas frecuentes</h3>
+          <p data-i18n="article5-desc">Todo lo que necesitas saber sobre este estudio preventivo esencial para la salud cervical.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">💊</div>
-          <div class="post-meta">Septiembre 2025 · Planificación</div>
-          <h3>Métodos anticonceptivos: ¿cuál es el ideal?</h3>
-          <p>Comparativa de opciones disponibles según tu estilo de vida, salud y objetivos reproductivos.</p>
+          <div class="post-meta" data-i18n="article6-meta">Septiembre 2025 · Planificación</div>
+          <h3 data-i18n="article6-title">Métodos anticonceptivos: ¿cuál es el ideal?</h3>
+          <p data-i18n="article6-desc">Comparativa de opciones disponibles según tu estilo de vida, salud y objetivos reproductivos.</p>
           <a href="#" class="btn small" style="margin-top:auto;">Leer más →</a>
         </article>
       </div>
@@ -242,11 +246,11 @@
     <div class="container">
       <div class="newsletter-box">
         <div style="font-size:36px;margin-bottom:12px;">💌</div>
-        <h3>Recibe consejos de salud en tu correo</h3>
-        <p>Artículos mensuales de la Dra. Lili Chong Loo sobre salud femenina, prevención y bienestar.</p>
+        <h3 data-i18n="newsletter-title">Recibe consejos de salud en tu correo</h3>
+        <p data-i18n="newsletter-desc">Artículos mensuales de la Dra. Lili Chong Loo sobre salud femenina, prevención y bienestar.</p>
         <form class="newsletter-form" onsubmit="return false;">
-          <input type="email" placeholder="tu@correo.com" aria-label="Correo electrónico" />
-          <button class="btn primary" type="submit">Suscribirme</button>
+          <input type="email" placeholder="tu@correo.com" data-i18n="newsletter-placeholder" aria-label="Correo electrónico" />
+          <button class="btn primary" type="submit" data-i18n="newsletter-btn">Suscribirme</button>
         </form>
       </div>
     </div>
@@ -258,12 +262,12 @@
       <div class="container">
         <div class="ctaBox">
           <div>
-            <h2>¿Necesitas una consulta médica?</h2>
-            <p>Agenda tu cita en línea. Nuestro equipo confirmará disponibilidad y tarifas.<br><strong>Las consultas no son gratuitas.</strong></p>
+            <h2 data-i18n="blog-cta-title">¿Necesitas una consulta médica?</h2>
+            <p><span data-i18n="blog-cta-desc">Agenda tu cita en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
           </div>
           <div class="ctaBtns">
-            <a class="btn" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 Agenda tu Cita</a>
-            <a class="btn outline" href="citas.html">Ver formulario</a>
+            <a class="btn" href="tel:+5076952-1588" target="_blank">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
+            <a class="btn outline" href="clinicas.html" data-i18n="cta-btn2">Ver formulario</a>
           </div>
         </div>
       </div>
@@ -277,10 +281,10 @@
     <div class="footerGrid">
       <div>
         <div class="brand-text">Dra. Lili Chong Loo</div>
-        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. Todos los derechos reservados.</div>
+        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. <span data-i18n="footer-copy">Todos los derechos reservados.</span></div>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="pill" href="citas.html">Citas</a>
+        <a class="pill" href="clinicas.html" data-i18n="nav-citas">Citas</a>
         <a class="pill" href="#top">Volver arriba ↑</a>
       </div>
     </div>
@@ -310,6 +314,10 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="translations.js"></script>
 <script src="scripts.js"></script>
 </body>
 </html>
+
+
+

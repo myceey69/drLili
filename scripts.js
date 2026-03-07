@@ -1,7 +1,7 @@
 /* scripts.js
-   Shared script for doctores.html + citas.html
+   Shared script for doctores.html + clinicas.html
    - No tel: or mailto: actions
-   - Doctors page navigates to citas.html?doctor=<id>
+   - Doctors page navigates to clinicas.html?doctor=<id>
    - Citas page preselects doctor from URL and requires fee agreement checkbox
 */
 
@@ -96,12 +96,12 @@ function doctorCard(d) {
 
   if (scheduleBtn) {
     scheduleBtn.addEventListener("click", () => {
-      window.location.href = `citas.html?doctor=${encodeURIComponent(d.id)}`;
+      window.location.href = `clinicas.html?doctor=${encodeURIComponent(d.id)}`;
     });
   }
   if (requestBtn) {
     requestBtn.addEventListener("click", () => {
-      window.location.href = `citas.html?doctor=${encodeURIComponent(d.id)}`;
+      window.location.href = `clinicas.html?doctor=${encodeURIComponent(d.id)}`;
     });
   }
 
@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // dialog.showModal/close may throw if not supported; attempt to hide
             modal.style.display = "none";
           }
-          window.location.href = `citas.html?doctor=${encodeURIComponent(id)}`;
+          window.location.href = `clinicas.html?doctor=${encodeURIComponent(id)}`;
         });
       });
 
@@ -362,6 +362,35 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
           modal.style.display = "none";
         }
+      }
+    });
+  }
+});
+
+/* Mobile hamburger menu */
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileNav = document.getElementById("mainNav");
+  
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      mobileNav.classList.toggle("active");
+    });
+    
+    // Close menu when a link is clicked
+    mobileNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        mobileNav.classList.remove("active");
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest("header")) {
+        menuToggle.classList.remove("active");
+        mobileNav.classList.remove("active");
       }
     });
   }

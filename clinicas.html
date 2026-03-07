@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nuestras Clínicas | Dra. Lili Chong Loo – Ginecología y Obstetricia</title>
+  <meta name="description" content="Visita una de nuestras tres clínicas en Panamá. Dorado Clinic Center, FertiClinic Center, o Bocas Surgery Center." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="mainHeader">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Dorado Clinic Center inicio">
+        <div class="brand-mark">🌸</div>
+        <span>Dra. Lili Chong Loo</span>
+      </a>
+      <button id="menuToggle" class="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav" aria-label="Navegación principal" class="mobileNav">
+        <ul>
+          <li><a href="index.html" data-i18n="nav-inicio">Inicio</a></li>
+          <li><a href="sobreLaDoctora.html" data-i18n="nav-doctora">Sobre La Doctora</a></li>
+          <li><a href="clinicas.html" aria-current="page" data-i18n="nav-clinicas">Clínicas</a></li>
+          <li><a href="blog.html" data-i18n="nav-blog">Blog</a></li>
+        </ul>
+      </nav>
+      <button id="langToggle" onclick="cycleLanguage()" style="border:none;background:white;cursor:pointer;">🇺🇸 EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="eyebrow" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);background:var(--blush);padding:6px 14px;border-radius:999px;margin-bottom:20px;">
+            🏥 <span data-i18n="clinicas-eyebrow">Nuestras Clínicas</span>
+          </div>
+          <h1 data-i18n="clinicas-title">Visítanos en tu ubicación más cercana</h1>
+          <p style="margin-top:12px;" data-i18n="clinicas-desc">
+            Contamos con tres sedes estratégicamente ubicadas en Panamá para brindarte atención especializada en Ginecología y Obstetricia. Selecciona la clínica que prefieras para agendar tu cita.
+          </p>
+        </div>
+
+        <aside class="sideCard">
+          <div class="kpiGrid">
+            <div class="kpi">
+              <div class="num">3</div>
+              <div class="label">Clínicas</div>
+            </div>
+            <div class="kpi">
+              <div class="num">Lun–Vie</div>
+              <div class="label">Disponible</div>
+            </div>
+          </div>
+          <div class="notice">
+            <strong>📌 Nota:</strong> Llama a la clínica de tu preferencia para confirmar disponibilidad y tarifas.
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLINICAS SECTION -->
+  <section id="clinicas" class="section">
+    <div class="container">
+      <div class="sectionTitle">
+        <div class="eyebrow" data-i18n="clinicas-section-eyebrow">Ubicaciones</div>
+        <h2 data-i18n="clinicas-section-title">Selecciona tu clínica</h2>
+      </div>
+
+      <div class="clinic-list">
+
+        <!-- DORADO CLINIC CENTER -->
+        <article class="clinic-entry">
+          <div class="clinic-info">
+            <div class="clinic-header">
+              <div class="clinic-icon">🏢</div>
+              <div>
+                <div class="clinic-city-badge">📍 Ciudad de Panamá</div>
+                <h3>Dorado Clinic Center</h3>
+              </div>
+            </div>
+
+            <div class="clinic-meta-grid">
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-ubicacion">📍 Dirección</span>
+                <span class="clinic-meta-text">Dorado City Center<br>Vía Ricardo J. Alfaro Local 405<br>Panamá, Provincia de Panamá</span>
+              </div>
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-horario">🕐 Horario</span>
+                <span class="clinic-meta-text">Lunes a Viernes<br>8:00 AM – 6:00 PM</span>
+              </div>
+            </div>
+
+            <div class="clinic-phone-row">
+              <span class="clinic-phone-icon">📞</span>
+              <a class="clinic-phone-num" href="tel:+5076952-1588">+507 6952-1588</a>
+              <span class="clinic-phone-label" data-i18n="clinicas-secretary">Secretaria</span>
+            </div>
+
+            <div class="clinic-actions">
+              <a class="btn primary" href="tel:+5076952-1588">
+                <span data-i18n="clinicas-call">📞 Llamar</span>
+              </a>
+              <a class="btn" href="https://www.google.com/maps?q=Dorado+City+Center,+Via+Ricardo+J+Alfaro,+Panama+City,+Panama" target="_blank" rel="noopener">
+                <span data-i18n="clinicas-map">🗺️ Ver mapa</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="clinic-map-panel">
+            <iframe
+              src="https://www.google.com/maps?q=Dorado+City+Center,+Via+Ricardo+J+Alfaro,+Panama+City,+Panama&output=embed"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa Dorado Clinic Center"></iframe>
+          </div>
+        </article>
+
+        <!-- FERTICLINIC CENTER -->
+        <article class="clinic-entry">
+          <div class="clinic-info">
+            <div class="clinic-header">
+              <div class="clinic-icon">🧬</div>
+              <div>
+                <div class="clinic-city-badge">📍 Ciudad de Panamá</div>
+                <h3>FertiClinic Center</h3>
+              </div>
+            </div>
+
+            <div class="clinic-meta-grid">
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-ubicacion">📍 Dirección</span>
+                <span class="clinic-meta-text">Pacífica Salud<br>Planta baja, Local #6<br>Panamá, Provincia de Panamá</span>
+              </div>
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-horario">🕐 Horario</span>
+                <span class="clinic-meta-text">Lunes a Viernes<br>8:00 AM – 6:00 PM</span>
+              </div>
+            </div>
+
+            <div class="clinic-phone-row">
+              <span class="clinic-phone-icon">📞</span>
+              <a class="clinic-phone-num" href="tel:+5076844-6504">+507 6844-6504</a>
+              <span class="clinic-phone-label" data-i18n="clinicas-secretary">Secretaria</span>
+            </div>
+
+            <div class="clinic-actions">
+              <a class="btn primary" href="tel:+5076844-6504">
+                <span data-i18n="clinicas-call">📞 Llamar</span>
+              </a>
+              <a class="btn" href="https://www.google.com/maps?q=Pacifica+Salud,+Panama+City,+Panama" target="_blank" rel="noopener">
+                <span data-i18n="clinicas-map">🗺️ Ver mapa</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="clinic-map-panel">
+            <iframe
+              src="https://www.google.com/maps?q=Ferticlinic+|+Clínica+de+Infertilidad,+Pacifica+Salud,+Panama+City,+Panama&output=embed"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa FertiClinic Center"></iframe>
+          </div>
+        </article>
+
+        <!-- BOCAS SURGERY CENTER -->
+        <article class="clinic-entry">
+          <div class="clinic-info">
+            <div class="clinic-header">
+              <div class="clinic-icon">🏝️</div>
+              <div>
+                <div class="clinic-city-badge clinic-city-badge--bocas">📍 Bocas del Toro</div>
+                <h3>Bocas Surgery Center</h3>
+              </div>
+            </div>
+
+            <div class="clinic-meta-grid">
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-ubicacion">📍 Dirección</span>
+                <span class="clinic-meta-text">Barriada Barnett<br>Provincia de Bocas del Toro<br>Panamá</span>
+              </div>
+              <div class="clinic-meta-item">
+                <span class="clinic-meta-label" data-i18n="clinicas-label-horario">🕐 Horario</span>
+                <span class="clinic-meta-text">Lunes a Viernes<br>8:00 AM – 6:00 PM</span>
+              </div>
+            </div>
+
+            <div class="clinic-phone-row">
+              <span class="clinic-phone-icon">📞</span>
+              <a class="clinic-phone-num" href="tel:+5076737-2696">+507 6737-2696</a>
+              <span class="clinic-phone-label" data-i18n="clinicas-secretary">Secretaria</span>
+            </div>
+
+            <div class="clinic-actions">
+              <a class="btn primary" href="tel:+5076737-2696">
+                <span data-i18n="clinicas-call">📞 Llamar</span>
+              </a>
+              <a class="btn" href="https://www.google.com/maps?q=Barriada+Barnett,+Bocas+del+Toro,+Panama" target="_blank" rel="noopener">
+                <span data-i18n="clinicas-map">🗺️ Ver mapa</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="clinic-map-panel">
+            <iframe
+              src="https://www.google.com/maps?q=Bocas+Surgery+Center,+Barriada+Barnett,+Bocas+del+Toro,+Panama&output=embed"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa Bocas Surgery Center"></iframe>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="sectionTitle">
+        <div class="eyebrow" data-i18n="faq-eyebrow">Preguntas Frecuentes</div>
+        <h2 data-i18n="faq-title">¿Tienes dudas?</h2>
+      </div>
+
+      <div class="faq-list">
+
+        <details class="faq-item">
+          <summary data-i18n="faq-q1">¿Cómo puedo agendar una cita?</summary>
+          <div class="faq-answer" data-i18n="faq-a1">Llama directamente a la clínica de tu preferencia en horario de oficina (lunes a viernes, 8:00 AM – 6:00 PM). Nuestra secretaria te ayudará a encontrar el horario que mejor se adapte a ti.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faq-q2">¿Cuánto cuesta una consulta?</summary>
+          <div class="faq-answer" data-i18n="faq-a2">Los costos varían según el tipo de consulta y la sede. Para información específica sobre tarifas, contacta directamente a la clínica de tu preferencia antes de la visita.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faq-q3">¿Qué debo llevar a mi primera cita?</summary>
+          <div class="faq-answer" data-i18n="faq-a3">Se recomienda traer tu cédula o pasaporte, carné de seguro médico (si aplica), historial médico relevante, resultados de exámenes anteriores y una lista de medicamentos actuales.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faq-q4">¿Aceptan seguros médicos?</summary>
+          <div class="faq-answer" data-i18n="faq-a4">Sí, aceptamos varios seguros médicos. Te recomendamos contactarnos previamente para confirmar si tu seguro está incluido en nuestra lista de afiliados.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary data-i18n="faq-q5">¿Cuáles son las diferencias entre las clínicas?</summary>
+          <div class="faq-answer" data-i18n="faq-a5">Dorado Clinic Center y FertiClinic Center están en Ciudad de Panamá, con acceso conveniente desde cualquier punto de la capital. Bocas Surgery Center atiende a pacientes en la Provincia de Bocas del Toro, ofreciendo la misma calidad de atención especializada.</div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta">
+    <div class="container">
+      <div class="ctaBox">
+        <div>
+          <h2 data-i18n="clinicas-cta-title">¿Listo para tu consulta?</h2>
+          <p data-i18n="clinicas-cta-desc">Selecciona tu clínica y llama para agendar. Nuestro equipo confirmará tu disponibilidad y tarifas.</p>
+        </div>
+        <div class="ctaBtns">
+          <a class="btn" href="#clinicas" data-i18n="clinicas-cta-call-now">
+            Ver las clínicas ↑
+          </a>
+          <a class="btn outline" href="index.html" data-i18n="clinicas-cta-back">
+            ← Volver al inicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footerGrid">
+      <div>
+        <div class="brand-text">Dra. Lili Chong Loo</div>
+        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Clínicas Especializadas.</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="pill" href="index.html" data-i18n="nav-inicio">Inicio</a>
+        <a class="pill" href="sobreLaDoctora.html" data-i18n="nav-doctora">La Doctora</a>
+        <a class="pill" href="clinicas.html" data-i18n="nav-clinicas">Clínicas</a>
+        <a class="pill" href="#top" data-i18n="back-to-top">Volver arriba ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="translations.js"></script>
+<script src="scripts.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+</script>
+</body>
+</html>
+

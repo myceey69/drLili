@@ -16,16 +16,20 @@
         <div class="brand-mark">🌸</div>
         <span>Dra. Lili Chong Loo</span>
       </a>
-      <nav aria-label="Navegación principal">
+      <button id="menuToggle" class="menuToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="mainNav" aria-label="Navegación principal" class="mobileNav">
         <ul>
-          <li><a href="index.html" aria-current="page">Inicio</a></li>
-          <li><a href="sobreLaDoctora.html">Sobre La Doctora</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="citas.html">Citas</a></li>
+          <li><a href="index.html" aria-current="page" data-i18n="nav-inicio">Inicio</a></li>
+          <li><a href="sobreLaDoctora.html" data-i18n="nav-doctora">Sobre La Doctora</a></li>
+          <li><a href="clinicas.html" data-i18n="nav-clinicas">Clínicas</a></li>
+          <li><a href="blog.html" data-i18n="nav-blog">Blog</a></li>
         </ul>
       </nav>
-      <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">
-        <span aria-hidden="true">📅</span> Agenda tu Cita
+      <button id="langToggle" onclick="cycleLanguage()" style="border:none;background:white;cursor:pointer;">🇺🇸 EN</button>
+      <a class="btn primary" href="clinicas.html" target="_blank">
+        <span aria-hidden="true">📅</span> <span data-i18n="nav-agendar">Agenda tu Cita</span>
       </a>
     </div>
   </div>
@@ -40,45 +44,45 @@
 
         <div class="spotlightText">
           <div class="eyebrow">
-            <span>🌿</span> Ginecología & Obstetricia
+            <span>🌿</span> <span data-i18n="hero-eyebrow">Ginecología & Obstetricia</span>
           </div>
-          <h1>Tu salud femenina en <em>las mejores manos</em></h1>
-          <p>
+          <h1><span data-i18n="hero-title">Tu salud femenina en</span> <em data-i18n="hero-title-em">las mejores manos</em></h1>
+          <p data-i18n="hero-desc1">
             La Dra. Lili Chong Loo es especialista dedicada al cuidado integral de la 
             salud femenina en todas las etapas de tu vida, con un enfoque humano, 
             profesional y basado en evidencia.
           </p>
-          <p>
+          <p data-i18n="hero-desc2">
             Desde el control prenatal hasta la planificación familiar, cada consulta 
             es personalizada para brindarte la tranquilidad y el bienestar que mereces.
           </p>
 
           <div class="heroCtas">
-            <a class="btn primary" href="citas.html">
-              📅 Solicitar Cita
+            <a class="btn primary" href="clinicas.html">
+              📅 <span data-i18n="hero-btn1">Solicitar Cita</span>
             </a>
             <a class="btn" href="sobreLaDoctora.html">
-              Conoce a la Doctora
+              <span data-i18n="hero-btn2">Conoce a la Doctora</span>
             </a>
           </div>
 
           <div class="trustBadges">
-            <span class="trustBadge"><span class="dot"></span>Control Prenatal</span>
-            <span class="trustBadge"><span class="dot"></span>Planificación Familiar</span>
-            <span class="trustBadge"><span class="dot"></span>Ultrasonido Ginecológico</span>
+            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge1">Control Prenatal</span></span>
+            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge2">Planificación Familiar</span></span>
+            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge3">Ultrasonido Ginecológico</span></span>
           </div>
         </div>
 
         <div class="spotlightImage">
           <div class="floatCard card2">
-            <div class="fc-num">+1000</div>
-            <div class="fc-label">Pacientes atendidas</div>
+            <div class="fc-num" data-i18n="float-card1">+500</div>
+            <div class="fc-label" data-i18n="float-card1-label">Pacientes atendidas</div>
           </div>
           <img src="doctora.png" alt="Dra. Lili Chong Loo, Especialista en Ginecología">
-          <!--<div class="floatCard card1">
-            <div class="fc-num">15+</div>
-            <div class="fc-label">Años de experiencia</div>
-          </div> --> 
+          <div class="floatCard card1">
+            <div class="fc-num" data-i18n="float-card2">15+</div>
+            <div class="fc-label" data-i18n="float-card2-label">Años de experiencia</div>
+          </div>
         </div>
 
       </div>
@@ -89,41 +93,41 @@
   <section class="section alt reveal">
     <div class="container">
       <div class="sectionTitle">
-        <div class="eyebrow">Nuestros Servicios</div>
-        <h2>Atención especializada para cada etapa</h2>
-        <p>Ofrecemos una amplia gama de servicios ginecológicos y obstétricos con el más alto nivel de calidad y calidez.</p>
+        <div class="eyebrow" data-i18n="services-eyebrow">Nuestros Servicios</div>
+        <h2 data-i18n="services-title">Atención especializada para cada etapa</h2>
+        <p data-i18n="services-desc">Ofrecemos una amplia gama de servicios ginecológicos y obstétricos con el más alto nivel de calidad y calidez.</p>
       </div>
 
       <div class="cards3">
         <article class="card reveal">
           <div class="card-icon">🤰</div>
-          <h3>Control Prenatal</h3>
-          <p>Acompañamiento médico integral durante el embarazo para asegurar la salud de mamá y bebé en cada etapa.</p>
+          <h3 data-i18n="service1-title">Control Prenatal</h3>
+          <p data-i18n="service1-desc">Acompañamiento médico integral durante el embarazo para asegurar la salud de mamá y bebé en cada etapa.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">🔬</div>
-          <h3>Estudios Ginecológicos</h3>
-          <p>Papanicolaou, colposcopía y diagnóstico de condiciones propias de la mujer con tecnología moderna y trato cálido.</p>
+          <h3 data-i18n="service2-title">Estudios Ginecológicos</h3>
+          <p data-i18n="service2-desc">Papanicolaou, colposcopía y diagnóstico de condiciones propias de la mujer con tecnología moderna y trato cálido.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">💠</div>
-          <h3>Planificación Familiar</h3>
-          <p>Asesoramiento personalizado sobre métodos anticonceptivos y opciones de fertilidad según tus objetivos de vida.</p>
+          <h3 data-i18n="service3-title">Planificación Familiar</h3>
+          <p data-i18n="service3-desc">Asesoramiento personalizado sobre métodos anticonceptivos y opciones de fertilidad según tus objetivos de vida.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">📡</div>
-          <h3>Ultrasonido Obstétrico</h3>
-          <p>Ultrasonido para seguimiento fetal detallado, evaluación de bienestar y estimación de edad gestacional.</p>
+          <h3 data-i18n="service4-title">Ultrasonido Obstétrico</h3>
+          <p data-i18n="service4-desc">Ultrasonido para seguimiento fetal detallado, evaluación de bienestar y estimación de edad gestacional.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">🌺</div>
-          <h3>Ultrasonido Ginecológico</h3>
-          <p>Diagnóstico por imagen para evaluar ovarios, útero y estructuras pélvicas con precisión y comodidad.</p>
+          <h3 data-i18n="service5-title">Ultrasonido Ginecológico</h3>
+          <p data-i18n="service5-desc">Diagnóstico por imagen para evaluar ovarios, útero y estructuras pélvicas con precisión y comodidad.</p>
         </article>
         <article class="card reveal">
           <div class="card-icon">👶</div>
-          <h3>Atención del Parto</h3>
-          <p>Presencia y acompañamiento especializado durante el trabajo de parto para una experiencia segura y tranquila.</p>
+          <h3 data-i18n="service6-title">Atención del Parto</h3>
+          <p data-i18n="service6-desc">Presencia y acompañamiento especializado durante el trabajo de parto para una experiencia segura y tranquila.</p>
         </article>
       </div>
     </div>
@@ -135,12 +139,12 @@
       <div class="container">
         <div class="ctaBox">
           <div>
-            <h2>¿Lista para tu primera consulta?</h2>
-            <p>Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.<br><strong>Las consultas no son gratuitas.</strong></p>
+            <h2 data-i18n="cta-title">¿Lista para tu primera consulta?</h2>
+            <p><span data-i18n="cta-desc">Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
           </div>
           <div class="ctaBtns">
-            <a class="btn" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 Agenda tu Cita</a>
-            <a class="btn outline" href="citas.html">Ver información de citas</a>
+            <a class="btn" href="tel:+5076952-1588" target="_blank">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
+            <a class="btn outline" href="clinicas.html" data-i18n="cta-btn2">Ver información de citas</a>
           </div>
         </div>
       </div>
@@ -155,7 +159,7 @@
 
       <div>
         <div class="brand-text">Dra. Lili Chong Loo</div>
-        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. Todos los derechos reservados.</div>
+        <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. <span data-i18n="footer-copy">Todos los derechos reservados.</span></div>
       </div>
 
       <div class="socialLinks">
@@ -174,8 +178,8 @@
       </div>
 
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="pill" href="citas.html">Citas</a>
-        <a class="pill" href="sobreLaDoctora.html">La Doctora</a>
+        <a class="pill" href="clinicas.html" data-i18n="nav-citas">Citas</a>
+        <a class="pill" href="sobreLaDoctora.html" data-i18n="nav-doctora">La Doctora</a>
         <a class="pill" href="#top">Volver arriba ↑</a>
       </div>
 
@@ -205,6 +209,10 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
+<script src="translations.js"></script>
 <script src="scripts.js"></script>
 </body>
 </html>
+
+
+
