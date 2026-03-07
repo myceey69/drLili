@@ -23,12 +23,12 @@
         <ul>
           <li><a href="index.html" data-i18n="nav-inicio">Inicio</a></li>
           <li><a href="sobreLaDoctora.html" aria-current="page" data-i18n="nav-doctora">Sobre La Doctora</a></li>
+          <li><a href="clinicas.html" data-i18n="nav-clinicas">Clínicas</a></li>
           <li><a href="blog.html" data-i18n="nav-blog">Blog</a></li>
-          <li><a href="citas.html" data-i18n="nav-citas">Citas</a></li>
         </ul>
       </nav>
-      <button id="langToggle" onclick="setLanguage(getLanguage() === 'es' ? 'en' : 'es')" style="border:none;background:white;cursor:pointer;">🇪🇸 ES</button>
-      <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">
+      <button id="langToggle" onclick="cycleLanguage()" style="border:none;background:white;cursor:pointer;">🇺🇸 EN</button>
+      <a class="btn primary" href="clinicas.html">
         <span aria-hidden="true">📅</span> <span data-i18n="nav-agendar">Agenda tu Cita</span>
       </a>
     </div>
@@ -48,10 +48,7 @@
           </div>
           <h1 data-i18n="doctora-title">Dra. Lili Chong Loo</h1>
           <p style="margin-top:12px;" data-i18n="doctora-desc">
-            En Dorado Clinic Center, la Dra. Lili Chong Loo acompaña a sus pacientes con 
-            un enfoque humano, basado en evidencia y orientado a resultados. Su prioridad 
-            es que entiendas tu diagnóstico, tus opciones y el plan de tratamiento más 
-            adecuado para ti.
+            Dra. Lili Chong, egresada de la Facultad de Medicina de la Universidad de Panamá, se especializa en Ginecología y Obstetricia en el Complejo Hospitalario Dr. Manuel Amador Guerrero. Con más de 15 años de experiencia, acompaña a sus pacientes en Dorado Clinic Center, FertiClinic Center y Bocas Surgery Center con un enfoque humano, basado en evidencia y orientado a resultados. Su prioridad es que entiendas tu diagnóstico, tus opciones y el plan de tratamiento más adecuado para ti.
           </p>
 
           <div class="bioHighlights" role="list" aria-label="Resumen profesional">
@@ -74,7 +71,7 @@
           </div>
 
           <div class="heroCtas" style="margin-top:24px;">
-            <a class="btn primary" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 <span data-i18n="nav-agendar">Agenda tu Cita</span></a>
+            <a class="btn primary" href="clinicas.html">📅 <span data-i18n="nav-agendar">Agenda tu Cita</span></a>
             <a class="btn" href="#contacto" data-i18n="nav-citas">Contacto</a>
           </div>
         </div>
@@ -97,7 +94,7 @@
 				
                 <span class="pill">🏥 Presencial</span>
               </div>
-              <a class="btn primary full" href="https://calendly.com/doradocliniccenter/" target="_blank">
+              <a class="btn primary full" href="tel:+5076952-1588" target="_blank">
                 📅 Reservar Cita
               </a>
             </div>
@@ -167,31 +164,51 @@
           <h3 data-i18n="education-title">Educación</h3>
           <ul class="timeline">
             <li>
-              <div class="time">Año – Año</div>
-              <div class="detail"><strong>Universidad / Institución</strong> — Grado / Especialidad</div>
+              <div class="time">2006</div>
+              <div class="detail"><strong>Facultad de Medicina</strong> — Universidad de Panamá</div>
             </li>
             <li>
-              <div class="time">Año – Año</div>
-              <div class="detail"><strong>Residencia / Fellow</strong> — Ginecología y Obstetricia</div>
+              <div class="time">2012</div>
+              <div class="detail"><strong>Médico Interno Categoría II</strong> — Hospital Santo Tomás</div>
             </li>
             <li>
-              <div class="time">Año</div>
-              <div class="detail"><strong>Formación adicional</strong> — Curso / Diplomado</div>
+              <div class="time">2013</div>
+              <div class="detail"><strong>Médico Interno Categoría I</strong> — Hospital Regional de la Chorrera, Dr. Nicolás A. Solano</div>
+            </li>
+            <li>
+              <div class="time">2014</div>
+              <div class="detail"><strong>Idoneidad en Medicina General</strong></div>
+            </li>
+            <li>
+              <div class="time">2015</div>
+              <div class="detail"><strong>Médico Residente de Ginecología y Obstetricia</strong> — Complejo Hospitalario Dr. Manuel Amador Guerrero</div>
+            </li>
+            <li>
+              <div class="time">2019</div>
+              <div class="detail"><strong>Idoneidad en Ginecología y Obstetricia</strong></div>
+            </li>
+            <li>
+              <div class="time">2020</div>
+              <div class="detail"><strong>Jefa del Servicio</strong> — Hospital Regional Dr. Raúl Dávila Mena</div>
+            </li>
+            <li>
+              <div class="time">2022</div>
+              <div class="detail"><strong>Médico Especialista en Ginecología y Obstetricia</strong> — Hospital Irma de Lourdes Tzanetatos</div>
             </li>
           </ul>
         </article>
 
         <article class="card reveal">
           <div class="card-icon">📋</div>
-          <h3 data-i18n="licenses-title">Licencias y certificaciones</h3>
+          <h3 data-i18n="licenses-title">Diplomados y Certificaciones</h3>
           <ul class="bullets">
-            <li>Licencia médica: (Número / Región)</li>
-            <li>Certificación: (Entidad certificadora)</li>
-            <li>Membresías profesionales: (Colegio / Asociación)</li>
+            <li>Programa de Gyn Laparoscopic Surgical Techniques — Instituto Johnson &amp; Johnson, Bogotá, Colombia (2019)</li>
+            <li>Cirugía Laparoscópica Ginecológica — Clínica del Country, Bogotá, Colombia (2019)</li>
+            <li>Formación en Ecografía Obstétrico y Ginecológica — Hospital Universitari Dexeus, Barcelona, España (2019)</li>
+            <li>Histerectomía – Actualización — XVII Congreso Bienal de Obstetricia y Ginecología. La Asociación Bogotana de Obstetricia y Ginecología (2019)</li>
+            <li>Trabajo de Investigación "Epidemiología de las madres adolescentes atendidas en el CHDr.MAG" — Colón (2019)</li>
+            <li>V Congreso de Neonatología, Ginecología y Obstetricia, Ier Congreso de Desarrollo Integral — Panamá (2019)</li>
           </ul>
-          <div class="note">
-            <strong>Nota:</strong> <span data-i18n="licenses-note">Esta sección puede mostrarse de forma discreta si prefieres no publicar números de cédula.</span>
-          </div>
         </article>
       </div>
     </div>
@@ -251,8 +268,8 @@
             <p><span data-i18n="doctora-cta-desc">Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
           </div>
           <div class="ctaBtns">
-            <a class="btn" href="https://calendly.com/doradocliniccenter/" target="_blank">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
-            <a class="btn outline" href="citas.html" data-i18n="cta-btn2">Ver información de citas</a>
+            <a class="btn" href="tel:+5076952-1588" target="_blank">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
+            <a class="btn outline" href="clinicas.html" data-i18n="cta-btn2">Ver información de citas</a>
           </div>
         </div>
       </div>
@@ -269,7 +286,7 @@
         <div style="font-size:13px; margin-top:4px;">© <span id="year"></span> Dorado Clinic Center. <span data-i18n="footer-copy">Todos los derechos reservados.</span></div>
       </div>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
-        <a class="pill" href="citas.html" data-i18n="nav-citas">Citas</a>
+        <a class="pill" href="clinicas.html" data-i18n="nav-citas">Citas</a>
         <a class="pill" href="#top">Volver arriba ↑</a>
       </div>
     </div>
@@ -295,3 +312,6 @@
 <script src="scripts.js"></script>
 </body>
 </html>
+
+
+

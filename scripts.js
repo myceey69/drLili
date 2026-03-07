@@ -1,7 +1,7 @@
 /* scripts.js
-   Shared script for doctores.html + citas.html
+   Shared script for doctores.html + clinicas.html
    - No tel: or mailto: actions
-   - Doctors page navigates to citas.html?doctor=<id>
+   - Doctors page navigates to clinicas.html?doctor=<id>
    - Citas page preselects doctor from URL and requires fee agreement checkbox
 */
 
@@ -96,12 +96,12 @@ function doctorCard(d) {
 
   if (scheduleBtn) {
     scheduleBtn.addEventListener("click", () => {
-      window.location.href = `citas.html?doctor=${encodeURIComponent(d.id)}`;
+      window.location.href = `clinicas.html?doctor=${encodeURIComponent(d.id)}`;
     });
   }
   if (requestBtn) {
     requestBtn.addEventListener("click", () => {
-      window.location.href = `citas.html?doctor=${encodeURIComponent(d.id)}`;
+      window.location.href = `clinicas.html?doctor=${encodeURIComponent(d.id)}`;
     });
   }
 
@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // dialog.showModal/close may throw if not supported; attempt to hide
             modal.style.display = "none";
           }
-          window.location.href = `citas.html?doctor=${encodeURIComponent(id)}`;
+          window.location.href = `clinicas.html?doctor=${encodeURIComponent(id)}`;
         });
       });
 
