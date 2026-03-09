@@ -6,6 +6,160 @@
   <title>Sobre la Doctora | Dorado Clinic Center</title>
   <meta name="description" content="Conoce la trayectoria, enfoque y áreas de atención de la Dra. Lili Chong Loo. Agenda tu cita en Dorado Clinic Center." />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Testimonials marquee ── */
+    .testimonials-section {
+      padding: 72px 0;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .testimonials-section .sectionTitle {
+      text-align: center;
+      margin-bottom: 44px;
+    }
+
+    .testimonials-section .sectionTitle p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* Stars */
+    .testi-stars {
+      color: #f5a623;
+      font-size: 13px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    /* Each marquee row */
+    .testi-row {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .testi-row:last-child { margin-bottom: 0; }
+
+    /* Fade edges */
+    .testi-row::before,
+    .testi-row::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 140px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .testi-row::before {
+      left: 0;
+      background: linear-gradient(to right, var(--cream), transparent);
+    }
+
+    .testi-row::after {
+      right: 0;
+      background: linear-gradient(to left, var(--cream), transparent);
+    }
+
+    /* Moving track */
+    .testi-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      padding: 6px 0;
+    }
+
+    .testi-track--left  { animation: testi-left  38s linear infinite; }
+    .testi-track--right { animation: testi-right 42s linear infinite; }
+
+    .testi-row:hover .testi-track { animation-play-state: paused; }
+
+    @keyframes testi-left  {
+      from { transform: translateX(0);    }
+      to   { transform: translateX(-50%); }
+    }
+
+    @keyframes testi-right {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0);    }
+    }
+
+    /* Individual card */
+    .testi-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      width: 300px;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(45,36,40,.05);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      cursor: default;
+      position: relative;
+    }
+
+    .testi-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(194,104,122,.14);
+      border-color: rgba(194,104,122,.3);
+    }
+
+    /* Large decorative quote mark */
+    .testi-card::before {
+      content: '"';
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      font-size: 56px;
+      line-height: 1;
+      color: var(--blush);
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+
+    .testi-text {
+      font-size: 13.5px;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testi-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose-lt), var(--blush));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+
+    .testi-service {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+  </style>
 </head>
 <body>
 
@@ -254,6 +408,251 @@
           <h3 data-i18n="service6-title">Atención del Parto</h3>
           <p data-i18n="service6-desc">Presencia especializada durante el trabajo de parto para una experiencia segura.</p>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="sectionTitle">
+        <div class="eyebrow">Pacientes</div>
+        <h2>Lo que dicen nuestras pacientes</h2>
+        <p>Experiencias reales de mujeres que confiaron su salud a la Dra. Lili Chong Loo.</p>
+      </div>
+    </div>
+
+    <!-- ROW 1 — scrolls left -->
+    <div class="testi-row">
+      <div class="testi-track testi-track--left">
+
+        <!-- Set 1 -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La doctora Lili me acompañó en todo mi embarazo con mucha paciencia. Siempre me explicó todo con claridad. ¡Muy recomendada!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
+            <div><div class="testi-name">María G.</div><div class="testi-service">Control Prenatal</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Excelente atención. La Dra. Chong es muy humana y dedicada. Me sentí en buenas manos desde la primera consulta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🦱</div>
+            <div><div class="testi-name">Alejandra M.</div><div class="testi-service">Ginecología General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Tuve una cesárea de emergencia y la Dra. Lili actuó con rapidez y tranquilidad. Le debo la salud de mi bebé."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🤱</div>
+            <div><div class="testi-name">Karla R.</div><div class="testi-service">Atención del Parto</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Llevaba meses buscando una ginecóloga de confianza. La Dra. Chong me dio el diagnóstico correcto y un plan muy claro."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🦰</div>
+            <div><div class="testi-name">Valentina S.</div><div class="testi-service">Estudios Ginecológicos</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Muy buena experiencia. La doctora es puntual y extremadamente atenta. El consultorio está muy bien ubicado."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍💼</div>
+            <div><div class="testi-name">Patricia L.</div><div class="testi-service">Consulta General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"El ultrasonido fue muy detallado y la Dra. Chong tomó tiempo para explicar cada imagen. Salí muy tranquila y segura."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🫄</div>
+            <div><div class="testi-name">Camila V.</div><div class="testi-service">Ultrasonido Obstétrico</div></div>
+          </div>
+        </div>
+
+        <!-- Set 2 — duplicate for loop -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La doctora Lili me acompañó en todo mi embarazo con mucha paciencia. Siempre me explicó todo con claridad. ¡Muy recomendada!"</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
+            <div><div class="testi-name">María G.</div><div class="testi-service">Control Prenatal</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Excelente atención. La Dra. Chong es muy humana y dedicada. Me sentí en buenas manos desde la primera consulta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🦱</div>
+            <div><div class="testi-name">Alejandra M.</div><div class="testi-service">Ginecología General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Tuve una cesárea de emergencia y la Dra. Lili actuó con rapidez y tranquilidad. Le debo la salud de mi bebé."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🤱</div>
+            <div><div class="testi-name">Karla R.</div><div class="testi-service">Atención del Parto</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Llevaba meses buscando una ginecóloga de confianza. La Dra. Chong me dio el diagnóstico correcto y un plan muy claro."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🦰</div>
+            <div><div class="testi-name">Valentina S.</div><div class="testi-service">Estudios Ginecológicos</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Muy buena experiencia. La doctora es puntual y extremadamente atenta. El consultorio está muy bien ubicado."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍💼</div>
+            <div><div class="testi-name">Patricia L.</div><div class="testi-service">Consulta General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"El ultrasonido fue muy detallado y la Dra. Chong tomó tiempo para explicar cada imagen. Salí muy tranquila y segura."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🫄</div>
+            <div><div class="testi-name">Camila V.</div><div class="testi-service">Ultrasonido Obstétrico</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ROW 2 — scrolls right -->
+    <div class="testi-row">
+      <div class="testi-track testi-track--right">
+
+        <!-- Set 1 -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Me recomendaron a la Dra. Lili para mi control prenatal y fue la mejor decisión. Cada visita fue tranquila y bien explicada."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🤰</div>
+            <div><div class="testi-name">Ana C.</div><div class="testi-service">Control Prenatal</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La atención en FertiClinic fue de primera. La doctora nos acompañó en cada etapa del proceso. Muy agradecida con ella."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🍼</div>
+            <div><div class="testi-name">Isabella T.</div><div class="testi-service">Planificación Familiar</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Profesional, empática y clara. Explicó mi diagnóstico de manera que lo entendí completamente. Primera vez que salgo tranquila de una consulta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🔬</div>
+            <div><div class="testi-name">Sofía B.</div><div class="testi-service">Estudios Preventivos</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Atención en Bocas del Toro, lejos de la capital, pero con la misma calidad de siempre. Muy contenta con el servicio."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🌴</div>
+            <div><div class="testi-name">Daniela F.</div><div class="testi-service">Bocas Surgery Center</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La Dra. Chong tiene una manera muy especial de tratar a sus pacientes. Te hace sentir escuchada y cuidada en todo momento."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">💆‍♀️</div>
+            <div><div class="testi-name">Luciana P.</div><div class="testi-service">Ginecología General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Después de años buscando respuestas, la Dra. Lili encontró la causa de mis molestias en la primera visita. Es una experta de verdad."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🌸</div>
+            <div><div class="testi-name">Renata Q.</div><div class="testi-service">Consulta Especializada</div></div>
+          </div>
+        </div>
+
+        <!-- Set 2 — duplicate for loop -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Me recomendaron a la Dra. Lili para mi control prenatal y fue la mejor decisión. Cada visita fue tranquila y bien explicada."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🤰</div>
+            <div><div class="testi-name">Ana C.</div><div class="testi-service">Control Prenatal</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La atención en FertiClinic fue de primera. La doctora nos acompañó en cada etapa del proceso. Muy agradecida con ella."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🍼</div>
+            <div><div class="testi-name">Isabella T.</div><div class="testi-service">Planificación Familiar</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Profesional, empática y clara. Explicó mi diagnóstico de manera que lo entendí completamente. Primera vez que salgo tranquila de una consulta."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩‍🔬</div>
+            <div><div class="testi-name">Sofía B.</div><div class="testi-service">Estudios Preventivos</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Atención en Bocas del Toro, lejos de la capital, pero con la misma calidad de siempre. Muy contenta con el servicio."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🌴</div>
+            <div><div class="testi-name">Daniela F.</div><div class="testi-service">Bocas Surgery Center</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"La Dra. Chong tiene una manera muy especial de tratar a sus pacientes. Te hace sentir escuchada y cuidada en todo momento."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">💆‍♀️</div>
+            <div><div class="testi-name">Luciana P.</div><div class="testi-service">Ginecología General</div></div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Después de años buscando respuestas, la Dra. Lili encontró la causa de mis molestias en la primera visita. Es una experta de verdad."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🌸</div>
+            <div><div class="testi-name">Renata Q.</div><div class="testi-service">Consulta Especializada</div></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>

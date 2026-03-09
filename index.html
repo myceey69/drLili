@@ -6,6 +6,395 @@
   <title>Dorado Clinic Center | Dra. Lili Chong Loo – Ginecología y Obstetricia</title>
   <meta name="description" content="La Dra. Lili Chong Loo ofrece atención especializada en Ginecología y Obstetricia. Control prenatal, planificación familiar, ultrasonido y más." />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Sticky sidebar layout ── */
+    .sticky-layout {
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 56px;
+      align-items: start;
+      padding: 72px 0 80px;
+    }
+
+    /* Left scrollable column */
+    .scroll-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Right sticky doctor card */
+    .sticky-col {
+      position: sticky;
+      top: 90px; /* overridden by JS to vertically center */
+    }
+
+    /* Hero text block */
+    .hero-block {
+      padding-bottom: 56px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 56px;
+    }
+
+    /* Services header inside right col */
+    .services-header {
+      margin-bottom: 32px;
+    }
+
+    /* ── Services timeline — centered zigzag ── */
+    .services-timeline {
+      position: relative;
+      padding: 20px 0 80px;
+      margin-bottom: 56px;
+    }
+
+    /* Faint static background track */
+    .services-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 2px;
+      transform: translateX(-50%);
+      background: rgba(194,104,122,.12);
+      border-radius: 2px;
+    }
+
+    /* Glowing progress fill — height driven by JS */
+    #timelineProgress {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 3px;
+      height: 0;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, var(--rose-lt), var(--rose), var(--rose-dk));
+      border-radius: 2px;
+      box-shadow: 0 0 18px rgba(194,104,122,.50);
+      pointer-events: none;
+      z-index: 1;
+      transition: height .05s linear;
+    }
+
+    /* Each row — 3-col grid: card | dot | card-or-spacer */
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 72px 1fr;
+      align-items: center;
+      gap: 0 20px;
+      margin-bottom: 88px;
+      position: relative;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    /* Dot always in center column */
+    .timeline-dot {
+      grid-column: 2;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--rose-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      box-shadow:
+        0 0 0 8px rgba(194,104,122,.08),
+        0 8px 28px rgba(194,104,122,.18);
+      transform: scale(0) rotate(-20deg);
+      transition:
+        transform .6s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .3s ease,
+        border-color .3s ease;
+    }
+
+    .timeline-item.visible .timeline-dot {
+      transform: scale(1) rotate(0deg);
+    }
+
+    .timeline-item:hover .timeline-dot {
+      border-color: var(--rose);
+      box-shadow:
+        0 0 0 14px rgba(194,104,122,.11),
+        0 12px 36px rgba(194,104,122,.32);
+    }
+
+    /* Horizontal connector line from dot toward card */
+    .timeline-item.tl-left  .timeline-dot::before,
+    .timeline-item.tl-right .timeline-dot::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      height: 1px;
+      width: 32px;
+      transform: translateY(-50%);
+    }
+    .timeline-item.tl-left  .timeline-dot::before {
+      right: calc(100% + 2px);
+      background: linear-gradient(to left, rgba(194,104,122,.35), transparent);
+    }
+    .timeline-item.tl-right .timeline-dot::before {
+      left: calc(100% + 2px);
+      background: linear-gradient(to right, rgba(194,104,122,.35), transparent);
+    }
+
+    /* Cards */
+    .timeline-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: 0 4px 20px rgba(45,36,40,.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Left card — col 1, slides in from left */
+    .timeline-item.tl-left .timeline-card {
+      grid-column: 1;
+      opacity: 0;
+      transform: translateX(-56px);
+      transition: opacity .7s ease, transform .7s ease, box-shadow .35s, border-color .3s;
+      transition-delay: .12s;
+    }
+
+    /* Right card — col 3, slides in from right */
+    .timeline-item.tl-right .timeline-card {
+      grid-column: 3;
+      opacity: 0;
+      transform: translateX(56px);
+      transition: opacity .7s ease, transform .7s ease, box-shadow .35s, border-color .3s;
+      transition-delay: .12s;
+    }
+
+    /* Empty spacer */
+    .tl-empty { min-height: 1px; }
+    .timeline-item.tl-left  .tl-empty { grid-column: 3; }
+    .timeline-item.tl-right .tl-empty { grid-column: 1; }
+
+    .timeline-item.visible .timeline-card {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Top accent bar on hover */
+    .timeline-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--rose-lt));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .timeline-item:hover .timeline-card {
+      box-shadow: 0 18px 52px rgba(194,104,122,.13), 0 4px 12px rgba(45,36,40,.07);
+      border-color: rgba(194,104,122,.28);
+    }
+
+    .timeline-item:hover .timeline-card::before { transform: scaleX(1); }
+
+    .timeline-card h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 8px;
+    }
+
+    .timeline-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Doctor card */
+    .doctor-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .12s ease, box-shadow .3s ease;
+      will-change: transform;
+      cursor: default;
+    }
+
+    .doctor-card-photo {
+      position: relative;
+      background: linear-gradient(160deg, var(--blush) 0%, rgba(123,158,135,.15) 100%);
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Cursor-following shimmer */
+    .doctor-card-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 0%),
+        rgba(255,255,255,.22) 0%,
+        transparent 55%
+      );
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .35s ease;
+      z-index: 3;
+    }
+
+    .doctor-card:hover .doctor-card-photo::after { opacity: 1; }
+
+    .doctor-card-photo img {
+      width: 100%;
+      display: block;
+      border-radius: 0;
+      filter: drop-shadow(0 -8px 32px rgba(45,36,40,.10));
+      transition: transform .5s ease;
+    }
+
+    .doctor-card:hover .doctor-card-photo img { transform: scale(1.04); }
+
+    .stat-pill {
+      position: absolute;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      box-shadow: 0 8px 24px rgba(45,36,40,.10);
+      animation: float 4s ease-in-out infinite;
+      z-index: 4;
+    }
+
+    .stat-pill.top-right { top: 24px; right: 12px; animation-delay: 0s; }
+    .stat-pill.mid-left  { top: 50%; left: 8px; transform: translateY(-50%); animation-delay: 1.8s; }
+
+    .stat-pill .num {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--rose);
+      line-height: 1;
+    }
+
+    .stat-pill .lbl {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .doctor-card-body {
+      padding: 20px 24px 24px;
+    }
+
+    .doctor-card-body .doc-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 2px;
+    }
+
+    .doctor-card-body .doc-role {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .lang-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .doctor-card-body .btn { width: 100%; justify-content: center; }
+
+    /* CTA strip at bottom of scroll col */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dk) 100%);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip h2 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .cta-strip p {
+      font-size: 14px;
+      color: rgba(255,255,255,.75);
+    }
+
+    .cta-strip .btn {
+      background: white;
+      color: var(--rose-dk);
+      border-color: transparent;
+      white-space: nowrap;
+    }
+
+    .cta-strip .btn:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 860px) {
+      .sticky-layout {
+        grid-template-columns: 1fr;
+        padding: 48px 0 60px;
+        gap: 40px;
+      }
+      .sticky-col { position: static; }
+
+      /* Timeline: collapse to single-side left-aligned */
+      .services-timeline::before { left: 32px; transform: none; }
+      #timelineProgress { left: 32px; transform: none; }
+
+      .timeline-item {
+        grid-template-columns: 64px 1fr;
+        margin-bottom: 32px;
+      }
+
+      .timeline-item.tl-left  .timeline-dot,
+      .timeline-item.tl-right .timeline-dot {
+        grid-column: 1;
+        width: 52px;
+        height: 52px;
+        font-size: 20px;
+      }
+
+      .timeline-item.tl-left  .timeline-card,
+      .timeline-item.tl-right .timeline-card {
+        grid-column: 2;
+        opacity: 0;
+        transform: translateX(28px);
+        transition-delay: .1s;
+      }
+
+      .tl-empty { display: none; }
+
+      .timeline-item.tl-left  .timeline-dot::before,
+      .timeline-item.tl-right .timeline-dot::before { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -37,118 +426,151 @@
 
 <main id="top">
 
-  <!-- HERO SPOTLIGHT -->
-  <section class="spotlightSection">
-    <div class="container">
-      <div class="spotlightGrid">
+  <div class="container">
+    <div class="sticky-layout">
 
-        <div class="spotlightText">
-          <div class="eyebrow">
-            <span>🌿</span> <span data-i18n="hero-eyebrow">Ginecología & Obstetricia</span>
-          </div>
-          <h1><span data-i18n="hero-title">Tu salud femenina en</span> <em data-i18n="hero-title-em">las mejores manos</em></h1>
-          <p data-i18n="hero-desc1">
-            La Dra. Lili Chong Loo es especialista dedicada al cuidado integral de la 
-            salud femenina en todas las etapas de tu vida, con un enfoque humano, 
-            profesional y basado en evidencia.
-          </p>
-          <p data-i18n="hero-desc2">
-            Desde el control prenatal hasta la planificación familiar, cada consulta 
-            es personalizada para brindarte la tranquilidad y el bienestar que mereces.
-          </p>
+      <!-- LEFT — scrollable: hero text + services + CTA -->
+      <div class="scroll-col">
 
-          <div class="heroCtas">
-            <a class="btn primary" href="clinicas.html">
-              📅 <span data-i18n="hero-btn1">Solicitar Cita</span>
-            </a>
-            <a class="btn" href="sobreLaDoctora.html">
-              <span data-i18n="hero-btn2">Conoce a la Doctora</span>
-            </a>
-          </div>
+        <!-- Hero text -->
+        <div class="hero-block">
+          <div class="spotlightText" style="animation:none;">
+            <div class="eyebrow">
+              <span>🌿</span> <span data-i18n="hero-eyebrow">Ginecología & Obstetricia</span>
+            </div>
+            <h1><span data-i18n="hero-title">Tu salud femenina en</span> <em data-i18n="hero-title-em">las mejores manos</em></h1>
+            <p data-i18n="hero-desc1">
+              La Dra. Lili Chong Loo es especialista dedicada al cuidado integral de la 
+              salud femenina en todas las etapas de tu vida, con un enfoque humano, 
+              profesional y basado en evidencia.
+            </p>
+            <p data-i18n="hero-desc2">
+              Desde el control prenatal hasta la planificación familiar, cada consulta 
+              es personalizada para brindarte la tranquilidad y el bienestar que mereces.
+            </p>
 
-          <div class="trustBadges">
-            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge1">Control Prenatal</span></span>
-            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge2">Planificación Familiar</span></span>
-            <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge3">Ultrasonido Ginecológico</span></span>
-          </div>
-        </div>
+            <div class="heroCtas">
+              <a class="btn primary" href="clinicas.html">
+                📅 <span data-i18n="hero-btn1">Solicitar Cita</span>
+              </a>
+              <a class="btn" href="sobreLaDoctora.html">
+                <span data-i18n="hero-btn2">Conoce a la Doctora</span>
+              </a>
+            </div>
 
-        <div class="spotlightImage">
-          <div class="floatCard card2">
-            <div class="fc-num" data-i18n="float-card1">+500</div>
-            <div class="fc-label" data-i18n="float-card1-label">Pacientes atendidas</div>
-          </div>
-          <img src="doctora.png" alt="Dra. Lili Chong Loo, Especialista en Ginecología">
-          <div class="floatCard card1">
-            <div class="fc-num" data-i18n="float-card2">15+</div>
-            <div class="fc-label" data-i18n="float-card2-label">Años de experiencia</div>
+            <div class="trustBadges">
+              <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge1">Control Prenatal</span></span>
+              <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge2">Planificación Familiar</span></span>
+              <span class="trustBadge"><span class="dot"></span><span data-i18n="trust-badge3">Ultrasonido Ginecológico</span></span>
+            </div>
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+        <!-- Services -->
+        <div class="services-header reveal">
+          <div class="eyebrow" data-i18n="services-eyebrow">Nuestros Servicios</div>
+          <h2 data-i18n="services-title">Atención especializada para cada etapa</h2>
+          <p data-i18n="services-desc">Ofrecemos una amplia gama de servicios ginecológicos y obstétricos con el más alto nivel de calidad y calidez.</p>
+        </div>
 
-  <!-- SERVICIOS -->
-  <section class="section alt reveal">
-    <div class="container">
-      <div class="sectionTitle">
-        <div class="eyebrow" data-i18n="services-eyebrow">Nuestros Servicios</div>
-        <h2 data-i18n="services-title">Atención especializada para cada etapa</h2>
-        <p data-i18n="services-desc">Ofrecemos una amplia gama de servicios ginecológicos y obstétricos con el más alto nivel de calidad y calidez.</p>
-      </div>
+        <div class="services-timeline">
+          <div id="timelineProgress"></div>
 
-      <div class="cards3">
-        <article class="card reveal">
-          <div class="card-icon">🤰</div>
-          <h3 data-i18n="service1-title">Control Prenatal</h3>
-          <p data-i18n="service1-desc">Acompañamiento médico integral durante el embarazo para asegurar la salud de mamá y bebé en cada etapa.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">🔬</div>
-          <h3 data-i18n="service2-title">Estudios Ginecológicos</h3>
-          <p data-i18n="service2-desc">Papanicolaou, colposcopía y diagnóstico de condiciones propias de la mujer con tecnología moderna y trato cálido.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">💠</div>
-          <h3 data-i18n="service3-title">Planificación Familiar</h3>
-          <p data-i18n="service3-desc">Asesoramiento personalizado sobre métodos anticonceptivos y opciones de fertilidad según tus objetivos de vida.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">📡</div>
-          <h3 data-i18n="service4-title">Ultrasonido Obstétrico</h3>
-          <p data-i18n="service4-desc">Ultrasonido para seguimiento fetal detallado, evaluación de bienestar y estimación de edad gestacional.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">🌺</div>
-          <h3 data-i18n="service5-title">Ultrasonido Ginecológico</h3>
-          <p data-i18n="service5-desc">Diagnóstico por imagen para evaluar ovarios, útero y estructuras pélvicas con precisión y comodidad.</p>
-        </article>
-        <article class="card reveal">
-          <div class="card-icon">👶</div>
-          <h3 data-i18n="service6-title">Atención del Parto</h3>
-          <p data-i18n="service6-desc">Presencia y acompañamiento especializado durante el trabajo de parto para una experiencia segura y tranquila.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <!-- 1 left -->
+          <div class="timeline-item tl-left">
+            <div class="timeline-card">
+              <h3 data-i18n="service1-title">Control Prenatal</h3>
+              <p data-i18n="service1-desc">Acompañamiento médico integral durante el embarazo para asegurar la salud de mamá y bebé en cada etapa.</p>
+            </div>
+            <div class="timeline-dot">🤰</div>
+            <div class="tl-empty"></div>
+          </div>
 
-  <!-- CTA SECTION -->
-  <section class="cta">
-    <div class="section">
-      <div class="container">
-        <div class="ctaBox">
+          <!-- 2 right -->
+          <div class="timeline-item tl-right">
+            <div class="tl-empty"></div>
+            <div class="timeline-dot">🔬</div>
+            <div class="timeline-card">
+              <h3 data-i18n="service2-title">Estudios Ginecológicos</h3>
+              <p data-i18n="service2-desc">Papanicolaou, colposcopía y diagnóstico de condiciones propias de la mujer con tecnología moderna y trato cálido.</p>
+            </div>
+          </div>
+
+          <!-- 3 left -->
+          <div class="timeline-item tl-left">
+            <div class="timeline-card">
+              <h3 data-i18n="service3-title">Planificación Familiar</h3>
+              <p data-i18n="service3-desc">Asesoramiento personalizado sobre métodos anticonceptivos y opciones de fertilidad según tus objetivos de vida.</p>
+            </div>
+            <div class="timeline-dot">💠</div>
+            <div class="tl-empty"></div>
+          </div>
+
+          <!-- 4 right -->
+          <div class="timeline-item tl-right">
+            <div class="tl-empty"></div>
+            <div class="timeline-dot">📡</div>
+            <div class="timeline-card">
+              <h3 data-i18n="service4-title">Ultrasonido Obstétrico</h3>
+              <p data-i18n="service4-desc">Ultrasonido para seguimiento fetal detallado, evaluación de bienestar y estimación de edad gestacional.</p>
+            </div>
+          </div>
+
+          <!-- 5 left -->
+          <div class="timeline-item tl-left">
+            <div class="timeline-card">
+              <h3 data-i18n="service5-title">Ultrasonido Ginecológico</h3>
+              <p data-i18n="service5-desc">Diagnóstico por imagen para evaluar ovarios, útero y estructuras pélvicas con precisión y comodidad.</p>
+            </div>
+            <div class="timeline-dot">🌺</div>
+            <div class="tl-empty"></div>
+          </div>
+
+          <!-- 6 right -->
+          <div class="timeline-item tl-right">
+            <div class="tl-empty"></div>
+            <div class="timeline-dot">👶</div>
+            <div class="timeline-card">
+              <h3 data-i18n="service6-title">Atención del Parto</h3>
+              <p data-i18n="service6-desc">Presencia y acompañamiento especializado durante el trabajo de parto para una experiencia segura y tranquila.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA strip -->
+        <div class="cta-strip reveal">
           <div>
             <h2 data-i18n="cta-title">¿Lista para tu primera consulta?</h2>
-            <p><span data-i18n="cta-desc">Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
+            <p><span data-i18n="cta-desc">Agenda en línea. Nuestro equipo confirmará disponibilidad y tarifas.</span><br><strong style="color:white;" data-i18n="cta-important">Las consultas no son gratuitas.</strong></p>
           </div>
-          <div class="ctaBtns">
-            <a class="btn" href="clinicas.html">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
-          </div>
+          <a class="btn" href="clinicas.html">📅 <span data-i18n="cta-btn1">Agenda tu Cita</span></a>
         </div>
+
       </div>
+      <!-- end scroll-col -->
+
+      <!-- RIGHT — sticky doctor card -->
+      <aside class="sticky-col">
+        <div class="doctor-card">
+
+          <div class="doctor-card-photo">
+            <div class="stat-pill top-right">
+              <div class="num" data-i18n="float-card1">+500</div>
+              <div class="lbl" data-i18n="float-card1-label">Pacientes atendidas</div>
+            </div>
+            <div class="stat-pill mid-left">
+              <div class="num" data-i18n="float-card2">15+</div>
+              <div class="lbl" data-i18n="float-card2-label">Años de experiencia</div>
+            </div>
+            <img src="doctora.png" alt="Dra. Lili Chong Loo, Especialista en Ginecología">
+          </div>
+
+        </div>
+      </aside>
+
     </div>
-  </section>
+  </div>
 
 </main>
 
@@ -188,22 +610,94 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
-  
+
   // Sticky header shadow
   const header = document.getElementById('mainHeader');
   window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 20);
   });
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+  // ── Timeline progress line — grows as you scroll through the section ──
+  const tlContainer = document.querySelector('.services-timeline');
+  const tlProgress  = document.getElementById('timelineProgress');
+
+  function updateTimelineProgress() {
+    if (!tlContainer || !tlProgress) return;
+    const rect   = tlContainer.getBoundingClientRect();
+    const vh     = window.innerHeight;
+    const total  = tlContainer.offsetHeight + vh;
+    const scrolled = vh - rect.top;           // px scrolled into section
+    const pct    = Math.min(Math.max(scrolled / total * 100, 0), 100);
+    tlProgress.style.height = pct + '%';
+  }
+
+  window.addEventListener('scroll', updateTimelineProgress, { passive: true });
+  updateTimelineProgress();
+
+  // ── Timeline items — bounce in when they enter the viewport ──
+  const tlObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        entry.target.classList.add('visible');
+        tlObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.35 });
+
+  document.querySelectorAll('.timeline-item').forEach(el => tlObserver.observe(el));
+
+  // ── Center sticky card vertically in the viewport ──
+  function centerStickyCard() {
+    const col = document.querySelector('.sticky-col');
+    if (!col) return;
+    const cardH = col.offsetHeight;
+    const vh    = window.innerHeight;
+    // Center in the space below the header (90px), never closer than 100px to header
+    const top   = Math.max(100, Math.round((vh - cardH) / 2));
+    col.style.top = top + 'px';
+  }
+  centerStickyCard();
+  window.addEventListener('resize', centerStickyCard);
+  const doctorCard = document.querySelector('.doctor-card');
+  const photoEl    = doctorCard?.querySelector('.doctor-card-photo');
+
+  if (doctorCard) {
+    doctorCard.addEventListener('mousemove', (e) => {
+      const r  = doctorCard.getBoundingClientRect();
+      const x  = e.clientX - r.left;
+      const y  = e.clientY - r.top;
+      const cx = r.width  / 2;
+      const cy = r.height / 2;
+      const rotX = ((y - cy) / cy * -7).toFixed(2);
+      const rotY = ((x - cx) / cx *  7).toFixed(2);
+      doctorCard.style.transform =
+        `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.018)`;
+      doctorCard.style.boxShadow =
+        `0 24px 64px rgba(194,104,122,.20), 0 8px 24px rgba(45,36,40,.08)`;
+
+      // Shimmer follows cursor inside photo
+      if (photoEl) {
+        const pr = photoEl.getBoundingClientRect();
+        const mx = ((e.clientX - pr.left) / pr.width  * 100).toFixed(1) + '%';
+        const my = ((e.clientY - pr.top)  / pr.height * 100).toFixed(1) + '%';
+        photoEl.style.setProperty('--mx', mx);
+        photoEl.style.setProperty('--my', my);
+      }
+    });
+
+    doctorCard.addEventListener('mouseleave', () => {
+      doctorCard.style.transform  = '';
+      doctorCard.style.boxShadow  = '';
+    });
+  }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>

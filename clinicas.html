@@ -6,6 +6,104 @@
   <title>Nuestras Clínicas | Dra. Lili Chong Loo – Ginecología y Obstetricia</title>
   <meta name="description" content="Visita una de nuestras tres clínicas en Panamá. Dorado Clinic Center, FertiClinic Center, o Bocas Surgery Center." />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Insurance marquee ── */
+    .insurance-section {
+      padding: 64px 0;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .insurance-section .sectionTitle {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    /* Outer mask — fades edges */
+    .insurance-marquee {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insurance-marquee::before,
+    .insurance-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 120px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .insurance-marquee::before {
+      left: 0;
+      background: linear-gradient(to right, var(--cream), transparent);
+    }
+
+    .insurance-marquee::after {
+      right: 0;
+      background: linear-gradient(to left, var(--cream), transparent);
+    }
+
+    /* The moving track — doubled for seamless loop */
+    .insurance-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: ins-scroll 32s linear infinite;
+    }
+
+    .insurance-marquee:hover .insurance-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes ins-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Individual badge */
+    .ins-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 14px 24px;
+      white-space: nowrap;
+      box-shadow: 0 2px 12px rgba(45,36,40,.05);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      cursor: default;
+      flex-shrink: 0;
+    }
+
+    .ins-badge:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(194,104,122,.15);
+      border-color: rgba(194,104,122,.35);
+    }
+
+    .ins-badge .ins-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .ins-badge .ins-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: .2px;
+    }
+
+    .ins-badge .ins-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+  </style>
 </head>
 <body>
 
@@ -214,6 +312,123 @@
               title="Mapa Bocas Surgery Center"></iframe>
           </div>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INSURANCE MARQUEE -->
+  <section class="insurance-section">
+    <div class="container">
+      <div class="sectionTitle">
+        <div class="eyebrow">Seguros Médicos</div>
+        <h2>Seguros que aceptamos</h2>
+        <p style="color:var(--muted);font-size:14px;margin-top:8px;">Contáctanos para confirmar cobertura de tu plan específico.</p>
+      </div>
+    </div>
+
+    <div class="insurance-marquee">
+      <div class="insurance-track">
+
+        <!-- SET 1 -->
+        <div class="ins-badge">
+          <span class="ins-icon">🛡️</span>
+          <div><div class="ins-name">ASSA Seguros</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🏦</span>
+          <div><div class="ins-name">Seguros Banistmo</div><div class="ins-sub">Salud y vida</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌎</span>
+          <div><div class="ins-name">Atlas America</div><div class="ins-sub">Seguro internacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🔷</span>
+          <div><div class="ins-name">Mapfre Panamá</div><div class="ins-sub">Seguro de salud</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌐</span>
+          <div><div class="ins-name">AIG Panamá</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🏥</span>
+          <div><div class="ins-name">Caja de Seguro Social</div><div class="ins-sub">Seguro nacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">💙</span>
+          <div><div class="ins-name">Pan-American Life</div><div class="ins-sub">Seguro de salud</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">⭐</span>
+          <div><div class="ins-name">La Nacional</div><div class="ins-sub">Seguros de vida</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌿</span>
+          <div><div class="ins-name">BNS Seguros</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">✈️</span>
+          <div><div class="ins-name">Worldwide Medical</div><div class="ins-sub">Seguro internacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🔴</span>
+          <div><div class="ins-name">Seguros Fedpa</div><div class="ins-sub">Salud familiar</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">💎</span>
+          <div><div class="ins-name">BUPA Panamá</div><div class="ins-sub">Seguro privado</div></div>
+        </div>
+
+        <!-- SET 2 — exact duplicate for seamless loop -->
+        <div class="ins-badge">
+          <span class="ins-icon">🛡️</span>
+          <div><div class="ins-name">ASSA Seguros</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🏦</span>
+          <div><div class="ins-name">Seguros Banistmo</div><div class="ins-sub">Salud y vida</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌎</span>
+          <div><div class="ins-name">Atlas America</div><div class="ins-sub">Seguro internacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🔷</span>
+          <div><div class="ins-name">Mapfre Panamá</div><div class="ins-sub">Seguro de salud</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌐</span>
+          <div><div class="ins-name">AIG Panamá</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🏥</span>
+          <div><div class="ins-name">Caja de Seguro Social</div><div class="ins-sub">Seguro nacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">💙</span>
+          <div><div class="ins-name">Pan-American Life</div><div class="ins-sub">Seguro de salud</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">⭐</span>
+          <div><div class="ins-name">La Nacional</div><div class="ins-sub">Seguros de vida</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🌿</span>
+          <div><div class="ins-name">BNS Seguros</div><div class="ins-sub">Cobertura médica</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">✈️</span>
+          <div><div class="ins-name">Worldwide Medical</div><div class="ins-sub">Seguro internacional</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">🔴</span>
+          <div><div class="ins-name">Seguros Fedpa</div><div class="ins-sub">Salud familiar</div></div>
+        </div>
+        <div class="ins-badge">
+          <span class="ins-icon">💎</span>
+          <div><div class="ins-name">BUPA Panamá</div><div class="ins-sub">Seguro privado</div></div>
+        </div>
 
       </div>
     </div>
