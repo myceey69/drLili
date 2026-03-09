@@ -159,6 +159,51 @@
       color: var(--muted);
       margin-top: 1px;
     }
+
+    @media (max-width: 860px) {
+      .testi-row::before,
+      .testi-row::after { width: 60px; }
+
+      .testi-card { width: 260px; }
+    }
+
+    @media (max-width: 560px) {
+      .testimonials-section { padding: 48px 0; }
+
+      .testimonials-section .sectionTitle { margin-bottom: 28px; }
+
+      /* Minimal fade — cards almost full-screen width */
+      .testi-row::before,
+      .testi-row::after { width: 24px; }
+
+      .testi-card {
+        width: 82vw;
+        max-width: 300px;
+        padding: 16px 18px;
+      }
+
+      .testi-card::before {
+        font-size: 40px;
+        top: 8px;
+        right: 12px;
+      }
+
+      .testi-stars { font-size: 11px; margin-bottom: 7px; }
+      .testi-text  { font-size: 12.5px; margin-bottom: 10px; }
+
+      .testi-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+      }
+
+      .testi-name    { font-size: 12px; }
+      .testi-service { font-size: 10px; }
+
+      /* Slightly faster on mobile — feels snappier */
+      .testi-track--left  { animation-duration: 28s; }
+      .testi-track--right { animation-duration: 32s; }
+    }
   </style>
 </head>
 <body>

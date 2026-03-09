@@ -359,25 +359,26 @@
     @media (max-width: 860px) {
       .sticky-layout {
         grid-template-columns: 1fr;
-        padding: 48px 0 60px;
-        gap: 40px;
+        padding: 40px 0 48px;
+        gap: 32px;
       }
       .sticky-col { position: static; }
 
       /* Timeline: collapse to single-side left-aligned */
-      .services-timeline::before { left: 32px; transform: none; }
-      #timelineProgress { left: 32px; transform: none; }
+      .services-timeline::before { left: 28px; transform: none; }
+      #timelineProgress { left: 28px; transform: none; }
 
       .timeline-item {
-        grid-template-columns: 64px 1fr;
-        margin-bottom: 32px;
+        grid-template-columns: 56px 1fr;
+        margin-bottom: 28px;
+        gap: 0 14px;
       }
 
       .timeline-item.tl-left  .timeline-dot,
       .timeline-item.tl-right .timeline-dot {
         grid-column: 1;
-        width: 52px;
-        height: 52px;
+        width: 48px;
+        height: 48px;
         font-size: 20px;
       }
 
@@ -385,7 +386,7 @@
       .timeline-item.tl-right .timeline-card {
         grid-column: 2;
         opacity: 0;
-        transform: translateX(28px);
+        transform: translateX(24px);
         transition-delay: .1s;
       }
 
@@ -393,6 +394,63 @@
 
       .timeline-item.tl-left  .timeline-dot::before,
       .timeline-item.tl-right .timeline-dot::before { display: none; }
+
+      .cta-strip {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 28px 24px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      /* Hero */
+      .hero-block {
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+
+      .services-header { margin-bottom: 20px; }
+
+      /* Smaller timeline on tiny phones */
+      .services-timeline::before { left: 22px; }
+      #timelineProgress { left: 22px; }
+
+      .timeline-item {
+        grid-template-columns: 44px 1fr;
+        gap: 0 12px;
+        margin-bottom: 20px;
+      }
+
+      .timeline-item.tl-left  .timeline-dot,
+      .timeline-item.tl-right .timeline-dot {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        box-shadow: 0 0 0 5px rgba(194,104,122,.08);
+      }
+
+      .timeline-card {
+        padding: 16px 16px;
+      }
+
+      .timeline-card h3 { font-size: 15px; }
+      .timeline-card p  { font-size: 13px; }
+
+      /* Hide floating stat pills — they overlap on small screens */
+      .stat-pill { display: none; }
+
+      /* CTA strip */
+      .cta-strip {
+        padding: 24px 18px;
+        border-radius: 12px;
+      }
+
+      .cta-strip h2 { font-size: 18px; }
+      .cta-strip .btn { width: 100%; justify-content: center; }
+
+      /* Doctor card */
+      .doctor-card { border-radius: 12px; }
     }
   </style>
 </head>

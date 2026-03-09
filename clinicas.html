@@ -103,6 +103,29 @@
       color: var(--muted);
       margin-top: 1px;
     }
+
+    @media (max-width: 860px) {
+      .insurance-marquee::before,
+      .insurance-marquee::after { width: 60px; }
+    }
+
+    @media (max-width: 560px) {
+      .insurance-section { padding: 44px 0; }
+
+      .insurance-section .sectionTitle { margin-bottom: 28px; }
+
+      .insurance-marquee::before,
+      .insurance-marquee::after { width: 32px; }
+
+      .ins-badge {
+        padding: 10px 14px;
+        gap: 8px;
+      }
+
+      .ins-badge .ins-icon { font-size: 18px; }
+      .ins-badge .ins-name { font-size: 12px; }
+      .ins-badge .ins-sub  { display: none; }
+    }
   </style>
 </head>
 <body>
