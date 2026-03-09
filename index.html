@@ -410,7 +410,9 @@
         margin-bottom: 32px;
       }
 
-      .services-header { margin-bottom: 20px; }
+      /* Hide services header — too wide for phone */
+      .services-header { display: none; }
+
 
       /* Smaller timeline on tiny phones */
       .services-timeline::before { left: 22px; }
@@ -758,6 +760,39 @@
   }, { threshold: 0.15 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Hamburger menu (initialized inline so it works before scripts.js loads) ──
+  (function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav  = document.getElementById('mainNav');
+    if (!menuToggle || !mobileNav) return;
+    menuToggle._burgerInit = true;
+
+    function closeMenu() {
+      menuToggle.classList.remove('active');
+      mobileNav.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    menuToggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.toggle('active');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('header')) closeMenu();
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 560) closeMenu();
+    });
+  })();
 </script>
 
 <script src="translations.js"></script>

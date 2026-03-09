@@ -372,7 +372,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const mobileNav = document.getElementById("mainNav");
 
-  if (menuToggle && mobileNav) {
+  if (menuToggle && mobileNav && !menuToggle._burgerInit) {
+    menuToggle._burgerInit = true;
     function closeMenu() {
       menuToggle.classList.remove("active");
       mobileNav.classList.remove("active");
