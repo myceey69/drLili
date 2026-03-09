@@ -362,7 +362,8 @@
         padding: 40px 0 48px;
         gap: 32px;
       }
-      .sticky-col { position: static; }
+      .sticky-col { position: static; order: -1; }
+      .scroll-col  { order: 0; }
 
       /* Timeline: collapse to single-side left-aligned */
       .services-timeline::before { left: 28px; transform: none; }
@@ -439,6 +440,17 @@
       .timeline-card h3 { font-size: 15px; }
       .timeline-card p  { font-size: 13px; }
 
+      /* Disable scroll-in animation on mobile — show cards immediately */
+      .timeline-item .timeline-card {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: box-shadow .35s, border-color .3s !important;
+      }
+      .timeline-item .timeline-dot {
+        transform: scale(1) rotate(0deg) !important;
+        transition: none !important;
+      }
+
       /* Hide floating stat pills — they overlap on small screens */
       .stat-pill { display: none; }
 
@@ -453,6 +465,7 @@
 
       /* Doctor card */
       .doctor-card { border-radius: 12px; }
+      .doctor-card-photo img { max-height: 340px; object-fit: cover; object-position: top; width: 100%; }
     }
   </style>
 </head>
