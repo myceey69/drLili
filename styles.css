@@ -136,15 +136,16 @@ nav a:hover, nav a[aria-current="page"] {
 }
 
 .menuToggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(10px, 10px);
+  transform: translateY(7.5px) rotate(45deg);
 }
 
 .menuToggle.active span:nth-child(2) {
   opacity: 0;
+  transform: scaleX(0);
 }
 
 .menuToggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
+  transform: translateY(-7.5px) rotate(-45deg);
 }
 
 .mobileNav {
@@ -1439,64 +1440,75 @@ select {
   .clinic-phone-num { font-size: 15px; }
   .kpiGrid { grid-template-columns: 1fr; }
   
-  header { position: relative; }
-  .nav { padding: 12px 0; gap: 8px; }
-  .brand { font-size: 16px; gap: 8px; }
+  /* Keep header sticky on mobile — .container (position:relative) anchors the dropdown */
+  .nav { padding: 12px 0; gap: 8px; position: relative; }
+  .brand { font-size: 16px; gap: 8px; flex: 1; }
   .brand-mark { width: 36px; height: 36px; font-size: 16px; }
-  
+
+  /* Hide the header CTA button so the nav bar isn't crowded */
+  .nav > .btn { display: none; }
+
+  /* Show the hamburger icon, push it to the right */
   .menuToggle {
     display: flex;
+    order: 3;
+    margin-left: 4px;
+  }
+
+  /* Language toggle: compact and before burger */
+  #langToggle {
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-left: 0;
     order: 2;
   }
-  
+
+  /* Dropdown panel */
   .mobileNav {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
+    left: -16px;          /* cancel container padding so it's edge-to-edge */
+    right: -16px;
     background: white;
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     max-height: 0;
     overflow: hidden;
-    transition: max-height .3s ease;
-    box-shadow: 0 4px 12px rgba(45,36,40,.08);
+    transition: max-height .35s ease;
+    box-shadow: 0 8px 20px rgba(45,36,40,.10);
+    z-index: 10;
   }
-  
+
   .mobileNav.active {
-    max-height: 250px;
+    max-height: 320px;
   }
-  
+
+  /* Stack nav links vertically */
   .mobileNav ul {
     flex-direction: column;
     gap: 0;
-    padding: 12px 0;
+    padding: 6px 0;
+    width: 100%;
   }
-  
-  .mobileNav li {
-    padding: 0;
-  }
-  
+
+  .mobileNav li { width: 100%; padding: 0; }
+
   .mobileNav a {
     display: block;
-    padding: 12px 16px;
+    padding: 13px 20px;
     border-radius: 0;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--charcoal);
     border-bottom: 1px solid var(--line);
   }
-  
-  .mobileNav a:last-child {
-    border-bottom: none;
-  }
-  
-  #langToggle { 
-    padding: 4px 8px; 
-    font-size: 11px; 
-    margin-left: 2px; 
-    order: 3;
-  }
-  
-  .nav > .btn {
-    display: none;
+
+  .mobileNav li:last-child a { border-bottom: none; }
+
+  .mobileNav a:hover,
+  .mobileNav a[aria-current="page"] {
+    background: var(--blush);
+    color: var(--rose-dk);
   }
   
   .spotlightSection { padding: 30px 0 20px; }

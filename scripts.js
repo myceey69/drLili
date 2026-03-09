@@ -371,27 +371,34 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const mobileNav = document.getElementById("mainNav");
-  
+
   if (menuToggle && mobileNav) {
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      mobileNav.classList.toggle("active");
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      mobileNav.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = mobileNav.classList.toggle("active");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
-    
-    // Close menu when a link is clicked
+
+    // Close when a nav link is clicked
     mobileNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active");
-        mobileNav.classList.remove("active");
-      });
+      link.addEventListener("click", closeMenu);
     });
-    
-    // Close menu when clicking outside
+
+    // Close when clicking outside the header
     document.addEventListener("click", (e) => {
-      if (!e.target.closest("header")) {
-        menuToggle.classList.remove("active");
-        mobileNav.classList.remove("active");
-      }
+      if (!e.target.closest("header")) closeMenu();
+    });
+
+    // Reset if window is resized above mobile breakpoint
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 560) closeMenu();
     });
   }
 });
