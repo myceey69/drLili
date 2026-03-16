@@ -1567,6 +1567,8 @@ select {
   .checkLabel input[type="checkbox"] { width: 16px; height: 16px; }
   
   .bioGrid { gap: 16px; }
+  .bioPhoto,
+  .bioPhotoFallback { display: none !important; }
   .bioPhoto { height: 300px; }
   .bioPhotoCard { border-radius: var(--radius-sm); }
   .bioSideContent { padding: 12px; }
