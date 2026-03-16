@@ -420,11 +420,11 @@
 
 
       /* Smaller timeline on tiny phones */
-      .services-timeline::before { left: 22px; }
-      #timelineProgress { left: 22px; }
+      .services-timeline::before,
+      #timelineProgress { display: none; }
 
       .timeline-item {
-        grid-template-columns: 44px 1fr;
+        grid-template-columns: 1fr;
         align-items: center;
         gap: 0 12px;
         margin-bottom: 20px;
@@ -432,14 +432,11 @@
 
       .timeline-item.tl-left  .timeline-dot,
       .timeline-item.tl-right .timeline-dot {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-        box-shadow: 0 0 0 5px rgba(194,104,122,.08);
-        justify-self: center;
-        align-self: center;
-        margin-top: 0;
+        display: none;
       }
+
+      .timeline-item.tl-left  .timeline-card,
+      .timeline-item.tl-right .timeline-card { grid-column: 1; }
 
       .timeline-card {
         padding: 16px 16px;
