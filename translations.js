@@ -707,15 +707,33 @@ const translations = {
 };
 
 // Language switcher functions
+function normalizeLanguage(lang) {
+  const raw = String(lang || '').toLowerCase().trim();
+  const aliases = {
+    es: 'es',
+    'es-es': 'es',
+    en: 'en',
+    'en-us': 'en',
+    'en-gb': 'en',
+    zh: 'zh',
+    'zh-cn': 'zh',
+    'zh-hans': 'zh',
+    cn: 'zh',
+    ch: 'zh'
+  };
+  return aliases[raw] || 'es';
+}
+
 function setLanguage(lang) {
-  localStorage.setItem('website-language', lang);
-  document.documentElement.lang = lang;
-  updatePageTranslations(lang);
+  const normalized = normalizeLanguage(lang);
+  localStorage.setItem('website-language', normalized);
+  document.documentElement.lang = normalized;
+  updatePageTranslations(normalized);
 }
 
 function getLanguage() {
   const saved = localStorage.getItem('website-language');
-  return saved || 'es';
+  return normalizeLanguage(saved || 'es');
 }
 
 function cycleLanguage() {
@@ -726,16 +744,15 @@ function cycleLanguage() {
 }
 
 function updatePageTranslations(lang) {
-  const currentLang = translations[lang];
+  const normalized = normalizeLanguage(lang);
+  const currentLang = translations[normalized];
   if (!currentLang) return;
 
   // Update all elements with data-i18n attribute
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (currentLang[key]) {
-      if (el.tagName === 'INPUT' && el.type === 'placeholder') {
-        el.placeholder = currentLang[key];
-      } else if (el.tagName === 'INPUT' && el.type === 'text') {
+      if ((el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') && 'placeholder' in el) {
         el.placeholder = currentLang[key];
       } else {
         el.innerHTML = currentLang[key];
@@ -743,11 +760,11 @@ function updatePageTranslations(lang) {
     }
   });
 
-  // Update language toggle button (shows next language in cycle: ES→EN→ZH→ES)
+  // Update language toggle button (shows current active language)
   const langBtn = document.getElementById('langToggle');
   if (langBtn) {
-    const nextLabel = { es: '🇺🇸 EN', en: '🇨🇳 中文', zh: '🇪🇸 ES' };
-    langBtn.textContent = nextLabel[lang] || '🇺🇸 EN';
+    const currentLabel = { es: '🇪🇸 ES', en: '🇺🇸 EN', zh: '🇨🇳 中文' };
+    langBtn.textContent = currentLabel[normalized] || '🇪🇸 ES';
   }
 }
 
